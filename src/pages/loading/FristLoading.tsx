@@ -46,7 +46,7 @@ export default   function FristLoading() {
             {
               loveMove && 
               <div className='bg-red-50 overflow-y-scroll h-[90vh]'>
-                <h3>Comming soon Lorem ipsum.</h3>
+                <h3>Comming soon Lorem ipsum v2.</h3>
                 <h3>Comming soon Lorem ipsum.</h3>
                 <h3>Comming soon Lorem ipsum.</h3>
                 <h3>Comming soon Lorem ipsum.</h3>
@@ -99,9 +99,11 @@ export default   function FristLoading() {
 
         {/* // Right side bar */}
 
-        <div className='w-[75vw] h-screen bg-gray-100'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi est inventore minima harum excepturi ex culpa cupiditate, a quibusdam blanditiis ab iure quos commodi nihil, debitis perspiciatis et assumenda error.
-        </div>
+        { loveMove &&
+          <div className='w-[75vw] h-screen bg-gray-100'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi est inventore minima harum excepturi ex culpa cupiditate, a quibusdam blanditiis ab iure quos commodi nihil, debitis perspiciatis et assumenda error.  
+          </div>
+        }
 
       </div>
 
