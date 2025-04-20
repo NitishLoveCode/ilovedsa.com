@@ -1,54 +1,90 @@
-# React + TypeScript + Vite
+# 💖 i💖dsa.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ilovedsa.com** is a social platform for developers — built like Tinder, but for coders. It's a place where developers can swipe, connect, chat, solve questions, video call, screen share, collaborate in real-time, and even listen to music while coding.
 
-Currently, two official plugins are available:
+## 🤝 Contributing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+We welcome developers from all over the world to contribute and help make **i💖dsa.com** the go-to platform for developer connection and collaboration.
 
-## Expanding the ESLint configuration
+Whether you're into frontend, backend, DevOps, UI/UX, testing, or just have awesome ideas — there's a place for you here!
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Ways to Contribute
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- 🧠 Improve features or add new ones
+- 🐛 Report or fix bugs
+- 📝 Improve documentation
+- 🎨 Suggest UI/UX improvements
+- 🚀 Optimize performance
+- 💡 Share ideas for making the platform more fun and helpful
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### How to Start
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m "Add some feature"`
+4. Push to the branch: `git push origin feature-name`
+5. Open a Pull Request
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Together, let's build a better platform for developers — by developers! 💻❤️
+
+---
+
+## 🔥 Features
+
+- 🔍 **Developer Matchmaking** (Tinder-style swiping to find coding partners)
+- 💬 **Online Chat & Voice Calling**
+- 🎥 **Video Calling + Screen Sharing**
+- ❓ **Daily Coding Questions & Solved DSA Bank**
+- 💻 **Online Compiler** (Code, Run, Debug in-browser)
+- 🎧 **Music While Coding**
+- 👤 **Developer Profiles & Activity Logs**
+- 🧠 **Collaboration Mode for Pair Programming**
+
+---
+
+## ⚙️ Tech Stack
+
+- ⚛️ **React** (Vite)
+- 🧠 **Redux / Zustand** (State Management)
+- 🌐 **WebSockets / Socket.IO** (Real-time Communication)
+- 📹 **WebRTC** (Video & Screen Sharing)
+- 🎵 **Spotify API / Custom Player** (Music)
+- 🧪 **CodeMirror / Monaco Editor** (Online Compiler)
+- 🔐 **Firebase/Auth / JWT** (Authentication)
+- 🌈 **TailwindCSS** (UI & Styling)
+
+---
+
+## 🧱 Folder Structure
+
+```bash
+ilovedsa/
+├── public/
+├── src/
+│   ├── assets/               # Static files (images, fonts, icons, music, etc.)
+│   ├── components/           # Reusable UI components (buttons, modals, cards, etc.)
+│   ├── features/             # Major features grouped by domain
+│   │   ├── auth/             # Login, register, social auth
+│   │   ├── matchmaking/      # Tinder-like swiping, matching devs
+│   │   ├── questions/        # Solve, browse, submit questions
+│   │   ├── videoCall/        # Video call, screen share
+│   │   ├── chat/             # Messaging, online presence
+│   │   ├── call/             # Voice call logic
+│   │   ├── compiler/         # Online code editor and compiler
+│   │   ├── music/            # Music player integration
+│   │   ├── profile/          # User profile, settings, activity
+│   │   └── dashboard/        # Main logged-in view or landing
+│   ├── hooks/                # Custom React hooks
+│   ├── layouts/              # Layouts (SidebarLayout, AuthLayout, etc.)
+│   ├── pages/                # Route-based pages (if using React Router or Next.js)
+│   ├── services/             # API calls (axios/fetch logic)
+│   ├── store/                # Global state (Redux, Zustand, Context API)
+│   ├── utils/                # Utility functions, validators, helpers
+│   ├── constants/            # Static data, enums, configs
+│   ├── App.jsx               # Root component
+│   ├── index.js              # Entry point
+│   └── index.css             # Global styles
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
