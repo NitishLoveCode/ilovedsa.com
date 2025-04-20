@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import logo from "../../assets/logo/wwwww.png";
+import logo from "../../assets/logo/ilovedsalogo.png";
 
 function FristLoading() {
   return (
