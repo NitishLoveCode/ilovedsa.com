@@ -1,7 +1,11 @@
+import { Fragment } from "react/jsx-runtime"
+import FristLoading from "./pages/loading/FristLoading"
 
 function App() {
   return (
-    <div>App</div>
+    <Fragment>
+      <FristLoading/>
+    </Fragment>
   )
 }
 
