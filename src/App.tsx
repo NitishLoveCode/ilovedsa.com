@@ -1,10 +1,13 @@
 import { Fragment } from "react/jsx-runtime"
-import FristLoading from "./pages/loading/FristLoading"
+import {BrowserRouter} from "react-router-dom"
+import RoutingConfig from "./navigation/RoutingConfig"
 
 function App() {
   return (
     <Fragment>
-      <FristLoading/>
+      <BrowserRouter>
+        <RoutingConfig/>
+      </BrowserRouter>
     </Fragment>
   )
 }
