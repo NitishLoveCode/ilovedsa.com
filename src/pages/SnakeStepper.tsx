@@ -1,8 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment} from "react";
 import Step from "./skakeStepper/Step";
 
 export default function SnakeStepper() {
-  const [active, setActive] = useState<number>(3)
   const data: number[][] = [
     [1, 2, 3, 4, 5, 6],
     [12, 11, 10, 9, 8, 7],
@@ -26,7 +25,7 @@ export default function SnakeStepper() {
                 isFirstElement={stepIndex === 0}
                 isEvenRow={rowIndex % 2 === 0}
                 isLastRow={rowIndex === data.length - 1}
-                activeNode = {active}
+                activeNode = {3}
               />
             ))}
           </div>
