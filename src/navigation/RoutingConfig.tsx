@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import PublicLayout from '../layouts/public/PublicLayout'
-import SnakeStepper from '../pages/SnakeStepper'
+import SnakeStepper from '../pages/skakeStepper/SnakeStepper'
 
 
 

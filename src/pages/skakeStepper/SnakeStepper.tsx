@@ -1,5 +1,5 @@
 import { Fragment} from "react";
-import Step from "./skakeStepper/Step";
+import Step from "./Step";
 
 export default function SnakeStepper() {
   const data: number[][] = [
