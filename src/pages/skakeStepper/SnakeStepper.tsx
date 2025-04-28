@@ -1,5 +1,6 @@
-import { Fragment} from "react";
+import { Fragment } from "react";
 import Step from "./Step";
+import { Box } from "@mui/material";
 
 export default function SnakeStepper() {
   const data: number[][] = [
@@ -12,25 +13,25 @@ export default function SnakeStepper() {
 
   return (
     <Fragment>
-      <div className="flex flex-col py-6 gap-16 items-center w-fit overflow-hidden">
+      <Box className="flex flex-col py-6 gap-16 items-center w-fit overflow-hidden">
         {data.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex gap-[5vw]">
+          <Box key={rowIndex} className="flex gap-[5vw]">
             {row.map((step, stepIndex) => (
               <Step
                 key={`${rowIndex}-${stepIndex}`}
                 element={step}
-                rowLength = {row.length}
+                rowLength={row.length}
                 isLastElement={stepIndex === row.length - 1}
                 isVeryLastElement={stepIndex}
                 isFirstElement={stepIndex === 0}
                 isEvenRow={rowIndex % 2 === 0}
                 isLastRow={rowIndex === data.length - 1}
-                activeNode = {3}
+                activeNode={3}
               />
             ))}
-          </div>
+          </Box>
         ))}
-      </div>
+      </Box>
     </Fragment>
   );
 }

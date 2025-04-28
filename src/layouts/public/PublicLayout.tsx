@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './components/Header';
 import LeftMenu from './components/LeftMenu';
 import RightSideBar from './components/RightSideBar';
+import { Box } from '@mui/material';
 
 function PublicLayout() {
   const [moveLeft, setMoveLeft] = useState<boolean>(false);
@@ -26,18 +27,18 @@ function PublicLayout() {
 
   return (
     <Fragment>
-      <div className='flex'>
+      <Box className='flex'>
 
-        <div>
+        <Box>
           <Header loveMove={loveMove} moveLeft = {moveLeft}/>
           <LeftMenu loveMove={loveMove}/>
-        </div>
+        </Box>
 
         <RightSideBar loveMove={loveMove}>
           <Outlet/>
         </RightSideBar>
         
-      </div>
+      </Box>
     </Fragment>
   )
 }

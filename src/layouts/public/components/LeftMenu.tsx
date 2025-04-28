@@ -14,12 +14,12 @@ function LeftMenu({loveMove}: {loveMove: boolean}) {
           <h3>Comming soon Lorem ipsum.</h3>
           <h3>Comming soon Lorem ipsum.</h3>
           <h3>Comming soon Lorem ipsum.</h3>
-          <button onClick={()=> navigation("/")}>Home</button>
-          <button onClick={()=> navigation("/1")}>goto 1</button>
-          <button onClick={()=> navigation("/2")}>goto 1</button>
-          <button onClick={()=> navigation("/3")}>goto 1</button>
-          <button onClick={()=> navigation("/4")}>goto 1</button>
-          <button onClick={()=> navigation("/5")}>goto 1</button>
+          <button className="border p-1" onClick={()=> navigation("/")}>Home</button>
+          <button className="border p-1" onClick={()=> navigation("/code-editor")}>code-editor</button>
+          <button className="border p-1" onClick={()=> navigation("/2")}>goto 1</button>
+          <button className="border p-1" onClick={()=> navigation("/3")}>goto 1</button>
+          <button className="border p-1" onClick={()=> navigation("/4")}>goto 1</button>
+          <button className="border p-1" onClick={()=> navigation("/5")}>goto 1</button>
         </div>
       )}
     </Fragment>
