@@ -1,15 +1,33 @@
-import React, { Fragment } from "react";
+import { Fragment, useState } from "react";
 import CodeEditor from "./component/CodeEditor";
 import Output from "./component/Output";
-import BasicSelect from "../../components/BasicSelect";
 import { Box } from "@mui/material";
+import { CODE_SNIPPETS } from "../../constants/CodeEditor";
+import { runCodeInBrowser } from "../../services/comilerServices/JavaScriptCompilerServices";
 
 function CompilerContainer() {
+  const [code, setCode] = useState<string>(CODE_SNIPPETS["javascript"]);
+
+  const runCode = () =>{
+
+    console.log("***************", code)
+
+
+    runCodeInBrowser(
+          code
+         ,
+          (output) => {
+            document.getElementById("output")!.innerText += output + "\n";
+          }
+        );
+
+  }
+
   return (
     <Fragment>
       <Box className="flex m-2 justify-between">
-        <CodeEditor />
-        <Output />
+        <CodeEditor code={code} setCode={setCode}/>
+        <Output onClick={runCode}/>
       </Box>
     </Fragment>
   );

@@ -4,3 +4,16 @@
 *{
   box-sizing: border-box;
 }
+
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 8px;
+  border: 2px solid #1e1e1e;
+}

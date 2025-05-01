@@ -1,6 +1,8 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: false,
   theme: {
     extend: {
       backgroundImage: {
@@ -14,7 +16,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      scrollbar: ['rounded'],
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }

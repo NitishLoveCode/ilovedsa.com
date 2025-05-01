@@ -25,6 +25,7 @@ const BasicSelect: React.FC<BasicSelectProps> = ({ label, value, onChange, optio
         <InputLabel id="basic-select-label">{label}</InputLabel>
         <Select
           labelId="basic-select-label"
+          className='h-11'
           id="basic-select"
           value={value}
           label={label}
