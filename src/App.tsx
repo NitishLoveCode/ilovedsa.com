@@ -3,13 +3,13 @@ import { BrowserRouter } from "react-router-dom";
 import RoutingConfig from "./navigation/RoutingConfig";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { getTheme } from "../src/layouts/theme/Theme";
-import { useState } from "react";
+import { getTheme } from "../src/layouts/theme/theme";
+import { useAppContext } from "./utils/AppContext";
 
 function App() {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const {themeMode} = useAppContext();
 
-  const theme = getTheme(mode);
+  const theme = getTheme(themeMode);
 
   return (
     <ThemeProvider theme={theme}>

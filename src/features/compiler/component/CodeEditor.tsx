@@ -5,14 +5,23 @@ import BasicSelect from "../../../components/BasicSelect";
 import { Box, SelectChangeEvent } from "@mui/material";
 import * as monacoEditor from 'monaco-editor'; // for strong typing
 import { BasicButton } from "../../../components/BasicButton";
+import { executeCode } from "../../../services/comilerServices/CompilerAPI";
 
 function CodeEditor() {
   const editorRef = useRef<monacoEditor.editor.IStandaloneCodeEditor | null>(null);
   const [language, setLanguage] = useState<keyof typeof CODE_SNIPPETS>("javascript");
+  const [value, setValue] = useState<string | undefined>("");
+
 
   // Handle editor mount
-  const handleEditorDidMount: OnMount = (editor, monaco) => {
+  const handleCodeRun = async() => {
+    const result = await executeCode(language, value!);
+    console.log(result);
+  }
+
+  const onMount: OnMount = (editor) => {
     editorRef.current = editor;
+    editor.focus();
   };
 
   // Handle language change
@@ -45,17 +54,24 @@ function CodeEditor() {
             options={convertLanguageVersions(LANGUAGE_VERSIONS)}
             className="w-48 ml-4"
           />
-          <BasicButton color="success" variant="contained" text="Run code" />
+          <BasicButton onClick={()=> handleCodeRun()} color="success" variant="contained" text="Run code" />
         </Box>
 
         <Box>
           <Editor
+            options={{
+              minimap: {
+                enabled: false,
+              },
+            }}
             height="70vh"
             width="43vw"
             theme="vs-dark"
             language={language}
-            value={CODE_SNIPPETS[language]}
-            onMount={handleEditorDidMount}
+            defaultValue={CODE_SNIPPETS[language]}
+            onMount={onMount}
+            value={value}
+            onChange={(value) => setValue(value)}
           />
         </Box>
       </Box>

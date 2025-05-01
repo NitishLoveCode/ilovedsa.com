@@ -1,18 +1,18 @@
-export const LANGUAGE_VERSIONS = {
+
+// Define a type for language names
+type Language = "javascript" | "python" | "java" | "csharp" | "php";
+
+export const LANGUAGE_VERSIONS: Record<Language, string> = {
     javascript: "18.15.0",
     python: "3.10.0",
     java: "15.0.2",
     csharp: "6.12.0",
     php: "8.2.3",
   };
-  
- // Define a type for language names
-type Language = "javascript" | "typescript" | "python" | "java" | "csharp" | "php";
 
 // Now tell TypeScript that CODE_SNIPPETS keys are only of type Language
 export const CODE_SNIPPETS: Record<Language, string> = {
   javascript: `\nfunction greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alex");\n`,
-  typescript: `\ntype Params = {\n\tname: string;\n}\n\nfunction greet(data: Params) {\n\tconsole.log("Hello, " + data.name + "!");\n}\n\ngreet({ name: "Alex" });\n`,
   python: `\ndef greet(name):\n\tprint("Hello, " + name + "!")\n\ngreet("Alex")\n`,
   java: `\npublic class HelloWorld {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}\n`,
   csharp: 'using System;\n\nnamespace HelloWorld\n{\n\tclass Hello { \n\t\tstatic void Main(string[] args) {\n\t\t\tConsole.WriteLine("Hello World in C#");\n\t\t}\n\t}\n}\n',
