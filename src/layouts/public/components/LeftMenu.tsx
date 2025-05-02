@@ -1,26 +1,18 @@
 import { Fragment } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../../utils/AppContext";
+import { Box, Typography } from "@mui/material";
 
 function LeftMenu({loveMove}: {loveMove: boolean}) {
-  const navigation = useNavigate()
+  const {themeMode} = useAppContext();
   return (
     <Fragment>
       {/* ---------- menue bar ----------*/}
 
       {loveMove && (
-        <div className="overflow-y-auto h-[90vh]">
-          <h3>Comming soon Lorem ipsum v2.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <button className="border p-1" onClick={()=> navigation("/")}>Home</button>
-          <button className="border p-1" onClick={()=> navigation("/code-editor")}>code-editor</button>
-          <button className="border p-1" onClick={()=> navigation("/2")}>goto 1</button>
-          <button className="border p-1" onClick={()=> navigation("/3")}>goto 1</button>
-          <button className="border p-1" onClick={()=> navigation("/4")}>goto 1</button>
-          <button className="border p-1" onClick={()=> navigation("/5")}>goto 1</button>
-        </div>
+        <Box className={`${themeMode === "dark" ? "border-r-[0.5px] border-gray-500" : ""} overflow-y-auto h-[90vh]`}>
+          <Typography>Feature.</Typography>
+          <Typography>1. You Have to Add Life On Each Attapt.</Typography>
+        </Box>
       )}
     </Fragment>
   );

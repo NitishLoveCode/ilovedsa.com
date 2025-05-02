@@ -8,6 +8,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 interface Option {
   label: string;
   value: string | number;
+  disabled: boolean;
 }
 
 interface BasicSelectProps {
@@ -32,7 +33,11 @@ const BasicSelect: React.FC<BasicSelectProps> = ({ label, value, onChange, optio
           onChange={onChange}
         >
           {options.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
+            <MenuItem 
+            key={option.value} 
+            value={option.value}
+            disabled={option.disabled}
+            >
               {option.label}
             </MenuItem>
           ))}
