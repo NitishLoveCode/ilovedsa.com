@@ -16,7 +16,10 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 // This is Provider to Wrap entire App.
 export const AppProvider:FC<AppProviderProps> = ({children}) =>{
-    const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
+    const getMode = localStorage.getItem("mode");
+    const initialMode = getMode === "dark" ? "dark" : "light"; // Default to light
+    const [themeMode, setThemeMode] = useState<"light" | "dark">(initialMode);
+    localStorage.setItem("mode", themeMode);
 
     return (
         <AppContext.Provider value={{themeMode, setThemeMode}}>

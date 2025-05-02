@@ -40,7 +40,7 @@ function PublicLayout() {
 
     const loveTimer = setTimeout(() => {
       setLoveMove(true);
-    }, 4000);
+    }, 3800);
 
     return () => {
       clearTimeout(timer);
