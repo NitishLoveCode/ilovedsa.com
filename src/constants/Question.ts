@@ -1,4 +1,4 @@
-export const JS_DSA_QUESTIONS = [
+export const questionSetForStep1 = [
   {
     id: 1,
     title: "Reverse a String",

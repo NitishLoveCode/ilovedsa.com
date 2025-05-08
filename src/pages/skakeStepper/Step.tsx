@@ -31,11 +31,11 @@ function Step({
 }: StepProps) {
   const navigation = useNavigate();
 
-    console.log(rowLength, isVeryLastElement+2)
+    // console.log(rowLength, isVeryLastElement+2)
   return (
     <Box className={`${isLastElement && "k"} relative`}>
       {/* Circle */}
-      <Box onClick={()=> navigation("/code-editor")} className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"} w-15 h-15 rounded-full flex items-center justify-center cursor-pointer`}>
+      <Box onClick={()=> navigation("/code-editor", {state:{solvingStep: element}})} className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"} w-15 h-15 rounded-full flex items-center justify-center cursor-pointer`}>
         <h1 className="z-20 text-3xl text-white">{element}</h1>
         {
           activeNode + 1 === element && <Box className="absolute z-50 h-30 text-2xl top-0 animate-bounce">❤️</Box>
