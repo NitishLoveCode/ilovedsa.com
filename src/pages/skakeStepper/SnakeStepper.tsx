@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Step from "./Step";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 export default function SnakeStepper() {
   
