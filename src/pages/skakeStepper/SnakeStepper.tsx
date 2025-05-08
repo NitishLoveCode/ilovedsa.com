@@ -29,7 +29,7 @@ export default function SnakeStepper() {
                   isFirstElement={stepIndex === 0}
                   isEvenRow={rowIndex % 2 === 0}
                   isLastRow={rowIndex === data.length - 1}
-                  activeNode={3}
+                  activeNode={0}
                 />
               ))}
             </Box>
