@@ -12,6 +12,7 @@ function LeftMenu({loveMove}: {loveMove: boolean}) {
         <Box className={`${themeMode === "dark" ? "border-r-[0.5px] border-gray-500" : ""} overflow-y-auto h-[90vh]`}>
           <Typography>Feature.</Typography>
           <Typography>1. You Have to Add Life On Each Attapt.</Typography>
+          <Typography>2. Techer can teach, they can share screen, multi code share screen, and payment, group collab.</Typography>
         </Box>
       )}
     </Fragment>

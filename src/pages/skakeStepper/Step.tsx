@@ -47,7 +47,7 @@ function Step({
 
       {/* Horizontal Green Line */}
       {!isLastElement && rowLength != isVeryLastElement+1 && (
-      <Box className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"}  rounded-full md:w-[${costomStyle?.middleLine ? costomStyle?.middleLine+"vw" : "12vw"}] w-[9vw] h-5 absolute top-5 left-1`}></Box>
+      <Box className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"}  rounded-full md:w-[${costomStyle?.middleLine ? costomStyle?.middleLine+"vw" : "10vw"}] w-[15vw] xl:w-[12vw] h-5 absolute top-5 left-1`}></Box>
       )}
 
       {/* Vertical Amber Line at Row Switch */}
