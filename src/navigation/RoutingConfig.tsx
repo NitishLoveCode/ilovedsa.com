@@ -15,11 +15,11 @@ function RoutingConfig() {
     <Routes>
         <Route path='/' element={<PublicLayout/>}>
           <Route key={1} path='/' element={<SnakeStepper/>}/>
-          <Route key={1} path='/code-editor' element={<CompilerContainer/>}/>
-          <Route key={1} path='/dummy' element={<Counter/>}/>
-          <Route key={1} path='/3' element={<h1>This asdfadsfasdfasdfis one bro1</h1>}/>
-          <Route key={1} path='/4' element={<h1>This issfdssss one bro1</h1>}/>
-          <Route key={1} path='/5' element={<h1>Thiso1</h1>}/>
+          <Route key={2} path='/code-editor' element={<CompilerContainer/>}/>
+          <Route key={3} path='/dummy' element={<Counter/>}/>
+          <Route key={4} path='/3' element={<h1>This asdfadsfasdfasdfis one bro1</h1>}/>
+          <Route key={5} path='/4' element={<h1>This issfdssss one bro1</h1>}/>
+          <Route key={6} path='/5' element={<h1>Thiso1</h1>}/>
         </Route>
     </Routes>
   )

@@ -3,13 +3,17 @@ import { IProbloms } from "../../../modal/compiler";
 
 
 
-
 const initialState: IProbloms = {
     id: 0,
     title: "",
     description: "",
     starterCode: ``,
-    testCases: [""]
+    testCases: [
+        {
+            input: "",
+            expectedOutput: ""
+        }
+    ]
 }
 
 
