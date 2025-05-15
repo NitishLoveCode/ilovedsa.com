@@ -44,14 +44,14 @@ function CompilerContainer() {
     const findSet = globelStepper.find((element: IglobelStepper) => element.step === activeNodePont)
     setProblomsSet(findSet);
     // This will only configure only for the frist time.
-    const currentProbloms = findSet?.stepProbloms[1]; // Probloms starting from no 1.
+    const currentProbloms = findSet?.stepProbloms[0]; // Probloms starting from no 1.
     dispatch(updateCurrentProblomsSolvingStatus(currentProbloms!));
     setCode(currentProbloms?.starterCode!);
   };
 
   const switchQuestion = (stepSwitch: number) =>{
     setStepTrack(stepSwitch-1);
-    const currentProbloms:IProbloms = problomsSet?.stepProbloms[stepSwitch];
+    const currentProbloms:IProbloms = problomsSet?.stepProbloms[stepSwitch-1];
     dispatch(updateCurrentProblomsSolvingStatus(currentProbloms!));
     setCode(currentProbloms?.starterCode!);
   }
