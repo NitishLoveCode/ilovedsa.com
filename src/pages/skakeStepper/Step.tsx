@@ -16,6 +16,7 @@ interface StepProps {
   isVeryLastElement: number;
   activeNode: number;
   costomStyle?: IcostomStyle;
+  onClick?: (step: number) => void;
 }
 
 function Step({ 
@@ -27,13 +28,14 @@ function Step({
   rowLength,
   activeNode,
   isVeryLastElement,
-  costomStyle
+  costomStyle,
+  onClick
 }: StepProps) {
   const navigation = useNavigate();
 
     // console.log(rowLength, isVeryLastElement+2)
   return (
-    <Box className={`${isLastElement && "k"} relative`}>
+    <Box onClick={() => onClick && onClick(element)} className={`${isLastElement && "k"} relative`}>
       {/* Circle */}
       <Box onClick={()=> navigation("/code-editor", {state:{activeNodePont: element}})} className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"} w-15 h-15 rounded-full flex items-center justify-center cursor-pointer`}>
         <h1 className="z-20 text-3xl text-white">{element}</h1>

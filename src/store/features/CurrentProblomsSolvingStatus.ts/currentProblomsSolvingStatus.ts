@@ -7,13 +7,7 @@ const initialState: IProbloms = {
     id: 0,
     title: "",
     description: "",
-    starterCode: ``,
-    testCases: [
-        {
-            input: "",
-            expectedOutput: ""
-        }
-    ]
+    starterCode: ``
 }
 
 
@@ -25,7 +19,6 @@ const currentProblomsSolvingStatus = createSlice({
             state.id = action.payload.id,
             state.description = action.payload.description,
             state.starterCode = action.payload.starterCode,
-            state.testCases = action.payload.testCases,
             state.title = action.payload.title
         }
     }

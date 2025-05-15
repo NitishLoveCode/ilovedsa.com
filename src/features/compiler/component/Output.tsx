@@ -1,25 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import { BasicButton } from "../../../components/BasicButton";
-import {useAppSelector} from "../../../store/store";
-import { useEffect} from "react";
 
-function Output({ onClick }: { onClick: (testCase: string) => void }) {
-  const {currentProblomsSolvingStatus} = useAppSelector(state => state);
-
-
-  const invokeAllTestCase = () =>{
-
-    currentProblomsSolvingStatus.testCases.forEach((testCase) =>{
-      const outputData = onClick(testCase.input);
-    })
-  }
+function Output({ onClick }: { onClick: () => void }) {
+  
 
 
   return (
     <Box className="mt-7.5">
       <Box className="mb-1 gap-2 items-center flex">
         <BasicButton
-          onClick={() => invokeAllTestCase()}
+          onClick={() => onClick()}
           color="success"
           variant="outlined"
           text="Run code"

@@ -7,5 +7,4 @@ export interface IProbloms {
   title: string;
   description: string;
   starterCode: string;
-  testCases: TestCase[];
 }
