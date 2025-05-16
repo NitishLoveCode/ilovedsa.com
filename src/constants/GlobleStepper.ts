@@ -1,5 +1,6 @@
 import {yourInterview } from "./QuestionBank/dummyQuestion/Question";
 import { questionSet1 } from "./QuestionBank/interViewQuestion/questionSet1";
+import { questionSet2 } from "./QuestionBank/interViewQuestion/questionSet2";
 
 export type IJS_DSA_QUESTIONS = typeof yourInterview;
 
@@ -11,7 +12,7 @@ export type IglobelStepper = {
 
 export const globelStepper: IglobelStepper[] = [
   { step: 1, stepProbloms: questionSet1 },
-  { step: 2, stepProbloms: yourInterview },
+  { step: 2, stepProbloms: questionSet2 },
   { step: 3, stepProbloms: yourInterview },
   { step: 4, stepProbloms: yourInterview },
   { step: 5, stepProbloms: yourInterview },

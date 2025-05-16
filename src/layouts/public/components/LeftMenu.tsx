@@ -16,11 +16,11 @@ function LeftMenu({ loveMove }: { loveMove: boolean }) {
             themeMode === "dark" ? "border-r-[0.5px] border-gray-500" : ""
           } overflow-y-auto h-[90vh] p-3 space-y-2`}
         >
-          <Typography variant="h5" component="h1">
+          <Typography style={{marginBottom: "20px"}} variant="h5" component="h1">
             {currentProblomsSolvingStatus.title}
           </Typography>
 
-          <Box className="prose prose-sm max-w-none dark:prose-invert">
+          <Box className=" prose prose-sm max-w-none dark:prose-invert">
             <ReactMarkdown>
               {currentProblomsSolvingStatus.description}
             </ReactMarkdown>
