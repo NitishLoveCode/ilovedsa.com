@@ -15,4 +15,37 @@ export const questionSet2 = [
     starterCode:
       "// Hey coder, write your code from here.\n\nconst original = {\n  name: 'Nitish',\n  address: { city: 'Delhi' }\n};\n\n// Create shallow copy and deep copy below\n\n// Perform changes and log the result",
   },
+  {
+    id: 3,
+    title: "#14. Implement a Custom myMap() Method Using Prototype.",
+    description:
+      "Create a custom `myMap()` function using `Array.prototype`. It should work the same as the native `map()` method, returning a new array after applying the provided callback function to each element.\n\n👉 Use `this` to refer to the calling array.\n👉 Do not use the built-in `map()` method.\n\nFor Example:\n\nInput:\n[1, 2, 3].myMap(x => x * 2)\n\nExpected Output:\n[2, 4, 6]",
+    starterCode:
+      "// Hey coder, write your code from here.\n\nconst data = [20, 30, 40, 50, 60];\n\n",
+  },
+  {
+    id: 4,
+    title: "#15. Implement a Custom myForEach() Method Using Prototype.",
+    description:
+      "Create a custom `myForEach()` method using `Array.prototype`. This method should behave like the built-in `forEach()` and execute a callback on each array element without returning anything.\n\n👉 Use `this` to refer to the calling array.\n👉 Do not use the built-in `forEach()` method.\n\nFor Example:\n\nInput:\n[10, 20, 30].myForEach(x => console.log(x))\n\nExpected Output:\n10\n20\n30",
+    starterCode:
+      "// Hey coder, write your code from here.\n\n const data = [20, 30, 40, 50, 60];",
+  },
+  {
+  id: 5,
+  title: "#16. Flatten an Array Without Using Any Inbuilt Function.",
+  description:
+    "Write a recursive function to flatten a nested array without using any built-in array methods\n\nFor Example:\n\nInput:\n[1, [2, [3, 4], 5], 6]\n\nExpected Output:\n[1, 2, 3, 4, 5, 6]",
+  starterCode:
+    "function flattenArray(arr) {\n  // Hey coder, write your recursive code here.\n}\n\nconsole.log(flattenArray([1, [2, [3, 4], 5], 6]));"
+},
+{
+  id: 7,
+  title: "#18. Flatten an Array Using Inbuilt Methods.",
+  description:
+    "Write a function to flatten a nested array using JavaScript's built-in methods.\n\nFor Example:\n\nInput:\n[1, [2, [3, 4], 5], 6]\n\nExpected Output:\n[1, 2, 3, 4, 5, 6]",
+  starterCode:
+    "function flattenArrayUsingBuiltIn(arr) {\n  // Hey coder, write your code using inbuilt method(s)\n}\n\nconsole.log(flattenArrayUsingBuiltIn([1, [2, [3, 4], 5], 6]));"
+}
+
 ];
