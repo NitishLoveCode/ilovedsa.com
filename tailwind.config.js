@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'sprite': "url('/images/icons/multiIcon.svg')",
+        'sprite': "url('/icons/multiIcon.svg')",
       },
       backgroundPosition: {
         'icon-red': '0 0',
