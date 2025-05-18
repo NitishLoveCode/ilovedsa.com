@@ -1,26 +1,31 @@
+import ReactMarkdown from "react-markdown";
 import { Fragment } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../../utils/AppContext";
+import { Box, Typography } from "@mui/material";
+import { useAppSelector } from "../../../store/store";
 
-function LeftMenu({loveMove}: {loveMove: boolean}) {
-  const navigation = useNavigate()
+function LeftMenu({ loveMove }: { loveMove: boolean }) {
+  const { themeMode } = useAppContext();
+  const { currentProblomsSolvingStatus } = useAppSelector(state => state);
+
   return (
     <Fragment>
-      {/* ---------- menue bar ----------*/}
-
       {loveMove && (
-        <div className="overflow-y-auto h-[90vh]">
-          <h3>Comming soon Lorem ipsum v2.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <h3>Comming soon Lorem ipsum.</h3>
-          <button className="border p-1" onClick={()=> navigation("/")}>Home</button>
-          <button className="border p-1" onClick={()=> navigation("/code-editor")}>code-editor</button>
-          <button className="border p-1" onClick={()=> navigation("/2")}>goto 1</button>
-          <button className="border p-1" onClick={()=> navigation("/3")}>goto 1</button>
-          <button className="border p-1" onClick={()=> navigation("/4")}>goto 1</button>
-          <button className="border p-1" onClick={()=> navigation("/5")}>goto 1</button>
-        </div>
+        <Box
+          className={`${
+            themeMode === "dark" ? "border-r-[0.5px] border-gray-500" : ""
+          } overflow-y-auto h-[90vh] p-3 space-y-2`}
+        >
+          <Typography style={{marginBottom: "20px"}} variant="h5" component="h1">
+            {currentProblomsSolvingStatus.title}
+          </Typography>
+
+          <Box className=" prose prose-sm max-w-none dark:prose-invert">
+            <ReactMarkdown>
+              {currentProblomsSolvingStatus.description}
+            </ReactMarkdown>
+          </Box>
+        </Box>
       )}
     </Fragment>
   );

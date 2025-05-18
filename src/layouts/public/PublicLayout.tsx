@@ -40,7 +40,7 @@ function PublicLayout() {
 
     const loveTimer = setTimeout(() => {
       setLoveMove(true);
-    }, 4000);
+    }, 3800);
 
     return () => {
       clearTimeout(timer);
@@ -51,7 +51,7 @@ function PublicLayout() {
   return (
     <Fragment>
       <Box className="flex relative">
-        <Box>
+        <Box className="w-[25vw]">
           <Header loveMove={loveMove} moveLeft={moveLeft} />
           <LeftMenu loveMove={loveMove} />
         </Box>

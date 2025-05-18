@@ -1,12 +1,12 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
+  './src/**/*.{js,ts,jsx,tsx}', // this must match where LandingPage.js lives
   ],
   darkMode: false,
   theme: {
     extend: {
       backgroundImage: {
-        'sprite': "url('/images/icons/multiIcon.svg')",
+        'sprite': "url('/icons/multiIcon.svg')",
       },
       backgroundPosition: {
         'icon-red': '0 0',
@@ -22,5 +22,7 @@ module.exports = {
   },
   plugins: [
     require('tailwind-scrollbar'),
+    require('@tailwindcss/typography'),
+
   ],
 }
