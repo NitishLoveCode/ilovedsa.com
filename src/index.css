@@ -5,6 +5,17 @@
   box-sizing: border-box;
 }
 
+.border-color-primary{
+  border-color: #FF7900;
+}
+
+.background-color-primary{
+  background-color: #FF7900;
+}
+
+.primary-color {
+  color: #FF7900;
+}
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
