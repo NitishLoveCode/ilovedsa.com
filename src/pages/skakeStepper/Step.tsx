@@ -23,7 +23,6 @@ function Step({
   isVeryLastElement
 }: StepProps) {
 
-    console.log(rowLength, isVeryLastElement+2)
   return (
     <Box className={`${isLastElement && "k"} relative`}>
       {/* Circle */}
