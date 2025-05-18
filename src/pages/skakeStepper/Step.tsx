@@ -33,7 +33,6 @@ function Step({
 }: StepProps) {
   const navigation = useNavigate();
 
-    // console.log(rowLength, isVeryLastElement+2)
   return (
     <Box onClick={() => onClick && onClick(element)} className={`${isLastElement && "k"} relative`}>
       {/* Circle */}
