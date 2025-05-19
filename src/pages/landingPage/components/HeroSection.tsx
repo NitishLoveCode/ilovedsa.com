@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import tagline from "../../../assets/images/topTagline.png"
 
 
 function HeroSection() {
@@ -13,8 +14,9 @@ function HeroSection() {
                 </div>
             </div>
             <div className="absolute right-28 -top-10">
-                <p className="primary-color">🚀 The Code. </p>
-                <p className="primary-color">Cracked. ..</p>
+                {/* <p className="primary-color">🚀 The Code. </p>
+                <p className="primary-color">Cracked. ..</p> */}
+                <img className="h-14" src={tagline} alt="Best Dsa website" />
             </div>
         </div>
         <div className="flex flex-col items-center justify-center mt-8">

@@ -1,12 +1,15 @@
 import { Fragment } from "react";
 import Headers from "./components/Headers";
 import HeroSection from "./components/HeroSection";
+import HighLIghtAndRightSideCard from "./components/HighLIghtAndRightSideCard";
+// import TagCloud from "./components/TagCloud";
+
 
 
 function LandingPage() {
   return (
     <Fragment>
-      <div className="w-screen h-screen border-6 border-color-primary">
+      <div className="w-screen h-screen border-6 border-color-primary overflow-hidden">
 
         {/* -------- Header ------ */}
         <Headers/>
@@ -14,18 +17,11 @@ function LandingPage() {
         {/* -- hero section */}
         <HeroSection/>
 
-        <div className="flex justify-between relative">
-          <div className="h-44 w-72 border-color-primary border-2 rounded-tr-[80px] rounded-br-[80px] absolute -left-2">
-              <div>
-                <span>Highlight</span>
-              </div>
-          </div>
+        {/* // Highlite and right site card */}
+        <HighLIghtAndRightSideCard/>
 
-          <div className="absolute right-0">
-            ell
-          </div>
-
-        </div>
+        {/* --------------- Tag cloud ----------- */}
+        {/* <TagCloud/> */}
       </div>
     </Fragment>
   );
