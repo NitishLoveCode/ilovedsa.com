@@ -1,4 +1,5 @@
 import {yourInterview } from "./QuestionBank/dummyQuestion/Question";
+import { codeStepByStep } from "./QuestionBank/interViewQuestion/CodeStepByStep";
 import { questionSet1 } from "./QuestionBank/interViewQuestion/questionSet1";
 import { questionSet2 } from "./QuestionBank/interViewQuestion/questionSet2";
 
@@ -13,7 +14,7 @@ export type IglobelStepper = {
 export const globelStepper: IglobelStepper[] = [
   { step: 1, stepProbloms: questionSet1 },
   { step: 2, stepProbloms: questionSet2 },
-  { step: 3, stepProbloms: yourInterview },
+  { step: 3, stepProbloms: codeStepByStep },
   { step: 4, stepProbloms: yourInterview },
   { step: 5, stepProbloms: yourInterview },
   { step: 6, stepProbloms: yourInterview },
