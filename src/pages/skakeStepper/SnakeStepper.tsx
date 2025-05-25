@@ -14,8 +14,8 @@ export default function SnakeStepper() {
 
   return (
     <Fragment>
-      <Box className="flex justify-center items-center">
-        <Box className="flex flex-col py-6 gap-16 items-center w-fit overflow-hidden">
+      <Box className="flex m-5">
+        <Box className="flex flex-col py-30 gap-26 items-center w-fit">
           {data.map((row, rowIndex) => (
             <Box key={rowIndex} className="flex gap-[5vw]">
               {row.map((step, stepIndex) => (
@@ -28,7 +28,7 @@ export default function SnakeStepper() {
                   isFirstElement={stepIndex === 0}
                   isEvenRow={rowIndex % 2 === 0}
                   isLastRow={rowIndex === data.length - 1}
-                  activeNode={0}
+                  activeNode={2}
                 />
               ))}
             </Box>

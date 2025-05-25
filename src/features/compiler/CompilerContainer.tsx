@@ -65,7 +65,7 @@ function CompilerContainer() {
 
   return (
     <Fragment>  
-      <Box className="m-5 mt-10">
+      <Box className="m-5 mt-20">
         <Box className="flex w-[70vw] justify-between">
           {row.map((step, stepIndex) => (
             <Step
