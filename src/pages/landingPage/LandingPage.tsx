@@ -4,7 +4,7 @@ import HeroSection from "./components/HeroSection";
 import HighLIghtAndRightSideCard from "./components/HighLIghtAndRightSideCard";
 import TagCloud from "../movingBall/TagCloud";
 import { Box } from "@mui/material";
-import AuthDialog from "../auth/AuthDialog";
+import { AuthDialog } from "../auth/AuthDialog";
 
 
 

@@ -6,33 +6,31 @@ import {
   DialogContent,
   TextField,
   DialogActions,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   ToggleButtonGroup,
   ToggleButton,
-  SelectChangeEvent,
 } from "@mui/material";
+import {userDetailsForm } from "../../modal/userServices/UserModal";
+import { UserServices } from "../../services/userServices/UserServices";
+import { useAppDispatch } from "../../store/store";
+import { addLoginUser } from "../../store/features/user/AuthUser";
+import toast from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 
-const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> void}) => {
+
+
+export const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> void}) => {
   const [mode, setMode] = useState<"login" | "signup">("login");
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<userDetailsForm>({
     name: "",
     email: "",
-    password: "",
-    gender: "",
+    password: ""
   });
-
-  const handleOpen = () => setOpen(true);
+  
+  const dispatch = useAppDispatch();  
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSelectChange = (e: SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -41,13 +39,38 @@ const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> 
     if (newMode) setMode(newMode);
   };
 
+  // user login configuration.
+  const userSignIn = async(formData: userDetailsForm) =>{
+    const response = await UserServices.signInUser({email: formData.email, password: formData.password});
+    toast.success('Login Success')
+    if(!response.error){
+      // Storing data into database.
+      dispatch(addLoginUser(response.user))
+      handleClose() 
+      navigate("/app")
+    }
+  }
+
+  // User signUp configuration
+  const userSignUp = async(formData: userDetailsForm) =>{
+    const response = await UserServices.signUpUser({username: formData.name, email: formData.email, password: formData.password});
+    if(!response.error){
+      toast.success('Signup Success')
+      // Storing data into database.
+      dispatch(addLoginUser(response.user));
+      handleClose();
+      navigate("/app")
+    }
+
+  }
+
+
   const handleSubmit = () => {
     if (mode === "login") {
-      console.log("Login with", formData.email, formData.password);
+      userSignIn(formData)
     } else {
-      console.log("Signup with", formData);
+      userSignUp(formData);
     }
-    handleClose();
   };
 
   return (
@@ -97,21 +120,6 @@ const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> 
             value={formData.password}
             onChange={handleInputChange}
           />
-
-          {mode === "signup" && (
-            <FormControl fullWidth margin="dense">
-              <InputLabel>Gender</InputLabel>
-              <Select
-                name="gender"
-                value={formData.gender}
-                onChange={handleSelectChange}
-              >
-                <MenuItem value="male">Male</MenuItem>
-                <MenuItem value="female">Female</MenuItem>
-                <MenuItem value="other">Other</MenuItem>
-              </Select>
-            </FormControl>
-          )}
         </DialogContent>
 
         <DialogActions>
@@ -125,4 +133,3 @@ const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> 
   );
 };
 
-export default AuthDialog;

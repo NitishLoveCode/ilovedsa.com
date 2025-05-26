@@ -28,7 +28,15 @@ axiosInstance.interceptors.request.use((config) => {
 
 
 // Response interceptor
-axiosInstance.interceptors.response.use((response) => response, (error) => {
+axiosInstance.interceptors.response.use((response) => {
+
+  if(response.status){
+    // handle globle response code here for Notification.
+  }
+
+  return response;
+  
+  }, (error) => {
     if (error.response?.status === 401) {
       // Optionally handle unauthorized errors (e.g., logout)
       console.warn('Unauthorized - Redirecting to login');

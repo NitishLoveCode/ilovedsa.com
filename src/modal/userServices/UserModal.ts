@@ -11,3 +11,9 @@ export interface IRegisterResponse {
   message: string;
   user: IUser;
 }
+
+export interface userDetailsForm {
+  name: string;
+  email: string;
+  password: string;
+}
