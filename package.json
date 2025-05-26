@@ -19,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.4",
     "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
     "formik": "^2.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@types/dotenv": "^6.1.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
