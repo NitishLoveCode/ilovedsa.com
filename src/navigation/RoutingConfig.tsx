@@ -4,6 +4,7 @@ import SnakeStepper from '../pages/skakeStepper/SnakeStepper'
 import CompilerContainer from '../features/compiler/CompilerContainer'
 import Counter from '../pages/DummyPages/Counter'
 import LandingPage from '../pages/landingPage/LandingPage'
+import TagCloud from '../pages/movingBall/TagCloud'
 
 
 
@@ -15,8 +16,7 @@ function RoutingConfig() {
   return (
     <Routes>
 
-        <Route path='/' element={<LandingPage/>}/>
-        
+        <Route path='/' element={<LandingPage/>}/>        
         <Route element={<PublicLayout/>}>
           <Route key={1} path='/app' element={<SnakeStepper/>}/>
           <Route key={2} path='/code-editor' element={<CompilerContainer/>}/>

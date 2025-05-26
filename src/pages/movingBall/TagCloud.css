@@ -1,0 +1,118 @@
+.tagcloud-wrapper {
+    --tc-transition-duration: 250ms;
+    --tc-transition-ease: ease-out;
+    --tc-bg-color-rgb: 0, 0, 0;
+    --tc-animation-duration: 25s;
+    --tc-animation-direction: normal;
+    --tc-animation-play-state: running;
+    --tc-diameter: 32rem;
+    --tc-tag-diameter: 5.5rem;
+    --tc-font-color-rgb: 255, 255, 255;
+    --tc-font-family: 'Open Sans', sans-serif;
+    --tc-font-size: 1rem;
+
+    perspective: calc(var(--tc-diameter) * 2);
+    transform-style: preserve-3d;
+    /* background: radial-gradient(
+        rgba(var(--tc-bg-color-rgb), 0.75) 15%,
+        rgba(var(--tc-bg-color-rgb), 0) calc(75% - var(--tc-tag-diameter))
+    ); */
+    width: var(--tc-diameter);
+    height: var(--tc-diameter);
+    border-radius: 50%;
+    font-family: var(--tc-font-family);
+    font-size: var(--tc-font-size);
+}
+
+.tagcloud-wrapper:hover {
+    --tc-animation-play-state: paused;
+}
+
+.tagcloud-wrapper .tagcloud {
+    list-style-type: none;
+    width: var(--tc-diameter);
+    height: var(--tc-diameter);
+    position: relative;
+    transform-style: preserve-3d;
+    --tc-radius: calc(calc(var(--tc-diameter) / 2) - calc(var(--tc-tag-diameter) / 2));
+    animation:
+        tc-rotation var(--tc-animation-duration) var(--tc-animation-direction) linear infinite var(--tc-animation-play-state),
+        tc-intro calc(var(--tc-transition-duration) * 4) var(--tc-transition-ease) 1;
+}
+
+.tagcloud-wrapper .tagcloud:has(.tagcloud-tag > a:hover) .tagcloud-tag:not(:has(a:hover)) {
+    opacity: 0.25;
+}
+
+.tagcloud-wrapper .tagcloud-tag {
+    --tc-phi: acos(calc(-1 + (2 * var(--index)) / var(--num-elements)));
+    --tc-theta: calc(sqrt(calc(var(--num-elements) * 3.141592653589793)) * var(--tc-phi));
+    --tc-x: calc(cos(var(--tc-theta)) * sin(var(--tc-phi)));
+    --tc-y: calc(sin(var(--tc-theta)) * sin(var(--tc-phi)));
+    --tc-z: calc(cos(var(--tc-phi)));
+    --tc-vector-length: sqrt(var(--tc-x) * var(--tc-x) + var(--tc-y) * var(--tc-y) + var(--tc-z) * var(--tc-z));
+    --tc-normalized-x: calc(var(--tc-x) / var(--tc-vector-length));
+    --tc-normalized-y: calc(var(--tc-y) / var(--tc-vector-length));
+    --tc-normalized-z: calc(var(--tc-z) / var(--tc-vector-length));
+    --tc-scaled-x: calc(var(--tc-normalized-x) * var(--tc-radius));
+    --tc-scaled-y: calc(var(--tc-normalized-y) * var(--tc-radius));
+    --tc-scaled-z: calc(var(--tc-normalized-z) * var(--tc-radius));
+    --tc-final-x: calc(var(--tc-scaled-x) + var(--tc-radius));
+    --tc-final-y: calc(var(--tc-scaled-y) + var(--tc-radius));
+    --tc-final-z: var(--tc-scaled-z);
+
+    pointer-events: none;
+    width: var(--tc-tag-diameter);
+    height: var(--tc-tag-diameter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transition: opacity var(--tc-transition-duration) var(--tc-transition-ease);
+    transform: translate3d(var(--tc-final-x), var(--tc-final-y), var(--tc-final-z));
+    animation: tc-tag-rotation var(--tc-animation-duration) var(--tc-animation-direction) linear infinite var(--tc-animation-play-state);
+}
+
+.tagcloud-wrapper .tagcloud-tag > a {
+    pointer-events: initial;
+    color: black;
+    font-size: smaller;
+    text-decoration: none;
+
+    /* text-shadow:
+        1px 1px 1px rgb(var(--tc-bg-color-rgb)),
+        1px -1px 1px rgb(var(--tc-bg-color-rgb)),
+        -1px 1px 1px rgb(var(--tc-bg-color-rgb)),
+        -1px -1px 1px rgb(var(--tc-bg-color-rgb)),
+        0 0 1rem rgb(var(--tc-bg-color-rgb)),
+        0 0 2rem rgb(var(--tc-bg-color-rgb)),
+        0 0 3rem rgb(var(--tc-bg-color-rgb)); */
+}
+
+/* Scoped Keyframes */
+@keyframes tc-rotation {
+    from {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
+
+@keyframes tc-intro {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes tc-tag-rotation {
+    from {
+        transform: translate3d(var(--tc-final-x), var(--tc-final-y), var(--tc-final-z)) rotateX(360deg) rotateY(360deg);
+    }
+    to {
+        transform: translate3d(var(--tc-final-x), var(--tc-final-y), var(--tc-final-z)) rotateX(0deg) rotateY(0deg);
+    }
+}

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import tagline from "../../../assets/images/topTagline.png"
 
 
-function HeroSection() {
+function HeroSection({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> void}) {
       const navigate = useNavigate()
     
   return (
@@ -25,7 +25,7 @@ function HeroSection() {
         </div>
         {/*  Button */}
         <div className="flex flex-row items-center justify-center mt-6 gap-12">
-            <button onClick={()=> navigate("/app")} className="bg-orange-100 primary-color p-2 px-4 rounded-4xl cursor-pointer">Start Solving</button>
+            <button onClick={()=> setOpen(!open)} className="bg-orange-100 primary-color p-2 px-4 rounded-4xl cursor-pointer">Start Solving</button>
             <button className="primary-color border-2 border-color-primary p-2 px-4 rounded-4xl cursor-pointer">Explore Topics</button>
         </div>
     </div>
