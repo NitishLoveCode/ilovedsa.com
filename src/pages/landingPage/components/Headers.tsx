@@ -2,7 +2,7 @@ import logo from "../../../assets/logo/colorLogo.png";
 import heartImage from "../../../assets/logo/heartImg.png";
 
 
-function Headers() {
+function Headers({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> void}) {
   return (
     <div className="flex items-center p-2 justify-between">
         {/* left div */}
@@ -17,9 +17,9 @@ function Headers() {
         {/* right div */}
         <div className="border-2 flex p-3 px-6 gap-8 rounded-2xl border-gray-600 w-auto">
             <span className="primary-color font-bold">Home</span>
-            <span>Practice</span>
-            <span>Contests</span>
-            <span>About Us</span>
+            <span className="cursor-pointer">Practice</span>
+            <span className="cursor-pointer" onClick={() => setOpen(true)}>Login</span>
+            <span className="cursor-pointer" onClick={() => setOpen(true)}>SignUp</span>
         </div>
     </div>
   )

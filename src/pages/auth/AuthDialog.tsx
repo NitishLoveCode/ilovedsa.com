@@ -15,6 +15,7 @@ import { useAppDispatch } from "../../store/store";
 import { addLoginUser } from "../../store/features/user/AuthUser";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import { DASHBOARD } from "../../navigation/CONSTANTS";
 
 
 
@@ -42,12 +43,12 @@ export const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: bool
   // user login configuration.
   const userSignIn = async(formData: userDetailsForm) =>{
     const response = await UserServices.signInUser({email: formData.email, password: formData.password});
-    toast.success('Login Success')
     if(!response.error){
+      toast.success('Login Success')
       // Storing data into database.
       dispatch(addLoginUser(response.user))
       handleClose() 
-      navigate("/app")
+      navigate(DASHBOARD, { replace: true });
     }
   }
 
@@ -59,7 +60,7 @@ export const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: bool
       // Storing data into database.
       dispatch(addLoginUser(response.user));
       handleClose();
-      navigate("/app")
+      navigate(DASHBOARD, { replace: true });
     }
 
   }
