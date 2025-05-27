@@ -6,7 +6,7 @@ import { runCodeInBrowser } from "../../services/comilerServices/JavaScriptCompi
 import Step from "../../pages/skakeStepper/Step";
 import { useLocation } from "react-router-dom";
 import { globelStepper, IglobelStepper} from "../../constants/GlobleStepper";
-import {updateCurrentProblomsSolvingStatus} from "../../store/features/CurrentProblomsSolvingStatus.ts/currentProblomsSolvingStatus";
+import {updateCurrentProblomsSolvingStatus} from "../../store/features/CurrentProblomsSolvingStatus/currentProblomsSolvingStatus";
 import {useAppDispatch} from "../../store/store";
 import { IProbloms } from "../../modal/compiler";
 
