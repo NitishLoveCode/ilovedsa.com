@@ -14,12 +14,12 @@ function RoutingConfig() {
       {/* ---------All public Routes--------------    */}
       <Route element={<PublicLayout />}>
         <Route key={1} path={APP} element={<SnakeStepper />} />
-        <Route key={2} path={CODE_EDITOR} element={<CompilerContainer />} />
       </Route>
 
       {/* ------------------All Private Routes ---------------- */}
       <Route element={<PrivateLayout />}>
         <Route key={1} path={DASHBOARD} element={<SnakeStepper />} />
+        <Route key={2} path={CODE_EDITOR} element={<CompilerContainer />} />
       </Route>
     </Routes>
   );

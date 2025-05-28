@@ -3,7 +3,6 @@ import Step from "./Step";
 import { Box } from "@mui/material";
 
 export default function SnakeStepper() {
-  
   const data: number[][] = [
     [1, 2, 3, 4, 5, 6],
     [12, 11, 10, 9, 8, 7],
