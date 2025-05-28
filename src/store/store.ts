@@ -10,7 +10,6 @@ import {
   REGISTER
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import counterReducer from './features/counter/counterSlice';
 import currentProblomsSolvingStatus from "./features/CurrentProblomsSolvingStatus/currentProblomsSolvingStatus";
 import authUser from "./features/user/AuthUser";
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -19,7 +18,6 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 // Combine reducers
 const rootReducer = combineReducers({
-  counter: counterReducer,
   currentProblomsSolvingStatus,
   authUser
 });

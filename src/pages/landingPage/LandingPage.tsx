@@ -28,7 +28,7 @@ function LandingPage() {
       <div className="w-screen h-screen  overflow-x-hidden">
 
         {/* -------- Header ------ */}
-        <Headers open ={open} setOpen={setOpen}/>
+        <Headers setOpen={setOpen}/>
 
         {/* -- hero section */}
         <HeroSection open ={open} setOpen={setOpen}/>

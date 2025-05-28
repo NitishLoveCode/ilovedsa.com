@@ -2,7 +2,7 @@ import logo from "../../../assets/logo/colorLogo.png";
 import heartImage from "../../../assets/logo/heartImg.png";
 
 
-function Headers({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=> void}) {
+function Headers({setOpen}:{setOpen:(parama: boolean)=> void}) {
   return (
     <div className="flex items-center p-2 justify-between">
         {/* left div */}
