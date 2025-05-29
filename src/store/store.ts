@@ -13,20 +13,22 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import currentProblomsSolvingStatus from "./features/CurrentProblomsSolvingStatus/currentProblomsSolvingStatus";
 import authUser from "./features/user/AuthUser";
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import addDsaStepsSlice from './features/dashboard/dsaSteps';
 
 
 
 // Combine reducers
 const rootReducer = combineReducers({
   currentProblomsSolvingStatus,
-  authUser
+  authUser, 
+  addDsaStepsSlice
 });
 
 // Config for persist
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['authUser'] // only persist authUser
+  whitelist: ['authUser', "addDsaStepsSlice"] // only persist authUser
   // blacklist: ['counter'] // everything EXCEPT `counter` will be persisted
 
 };

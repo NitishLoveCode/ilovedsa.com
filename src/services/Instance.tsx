@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from './CONSTANTS';
+import { BASE_URL } from './CONSTANTS.SERVICES';
 
 
 
@@ -7,11 +7,11 @@ import { BASE_URL } from './CONSTANTS';
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
 });
-
 
 // Request interceptor
 axiosInstance.interceptors.request.use((config) => {

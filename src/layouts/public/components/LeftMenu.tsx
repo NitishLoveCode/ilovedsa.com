@@ -17,12 +17,12 @@ function LeftMenu({ loveMove }: { loveMove: boolean }) {
           } overflow-y-auto h-[90vh] p-3 space-y-2`}
         >
           <Typography style={{marginBottom: "20px"}} variant="h5" component="h1">
-            {currentProblomsSolvingStatus.title}
+            {currentProblomsSolvingStatus?.title}
           </Typography>
 
           <Box className=" prose prose-sm max-w-none dark:prose-invert">
             <ReactMarkdown>
-              {currentProblomsSolvingStatus.description}
+              {currentProblomsSolvingStatus?.description}
             </ReactMarkdown>
           </Box>
         </Box>

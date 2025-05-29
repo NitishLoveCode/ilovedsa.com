@@ -1,7 +1,6 @@
-import { AxiosResponse } from "axios";
 import { IRegisterResponse, userDetailsForm } from "../../modal/userServices/UserModal";
 import { postRequest } from "../api";
-import { SIGNIN_AUTH, SIGNUP_AUTH } from "../CONSTANTS";
+import { SIGNIN_AUTH, SIGNUP_AUTH } from "../CONSTANTS.SERVICES";
 
 
 
