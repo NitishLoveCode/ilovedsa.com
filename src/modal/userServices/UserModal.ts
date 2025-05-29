@@ -9,7 +9,7 @@ export interface IUser {
 export interface IRegisterResponse {
   error: boolean;
   message: string;
-  user: IUser;
+  data: IUser;
 }
 
 export interface userDetailsForm {

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import winnerFlag from "../../assets/icons/winnerFlag.webp";
 import { useNavigate } from "react-router-dom";
+import { IDsaSteps } from "../../modal/dashboard/DashboardModal";
 
 type IcostomStyle = {
   middleLine: string;
@@ -16,6 +17,7 @@ interface StepProps {
   isVeryLastElement: number;
   activeNode: number;
   costomStyle?: IcostomStyle;
+  stepName?: IDsaSteps;
   onClick?: (step: number) => void;
 }
 
@@ -29,17 +31,20 @@ function Step({
   activeNode,
   isVeryLastElement,
   costomStyle,
+  stepName,
   onClick
 }: StepProps) {
   const navigation = useNavigate();
 
   return (
     <Box onClick={() => onClick && onClick(element)} className={`${isLastElement && "k"} relative`}>
-      <Box className={`absolute h-[60px] w-[85px] -top-[70px] -left-2.5 rounded-md bg-transparent border ${activeNode >= element ? "border-green-500" : "border-purple-400"}`} >
+      <Box className={`absolute h-[70px] w-[100px] -top-[86px] -left-2.5 rounded-md bg-transparent border ${activeNode >= element ? "border-green-500" : "border-purple-400"}`} >
         <Box className = "relative">
-          <Box className = {`absolute w-[1px] h-[30px] ${activeNode >= element ? "bg-green-500" : "bg-purple-400"} top-[58.5px] right-[36px] overflow-hidden -z-10`}></Box>
+          <Box className = {`absolute w-[1px] h-[25px] ${activeNode >= element ? "bg-green-500" : "bg-purple-400"} top-[68px] right-[55px] overflow-hidden -z-10`}></Box>
         </Box>
-        <Typography variant="caption" component={"p"} style={{lineHeight: "10px", padding: "3px", fontSize: "11px"}}>Binery search hell hdfas mango hella afda hada adfe ssafdr</Typography>
+        <Typography variant="caption" component={"p"} style={{lineHeight: "10px", padding: "3px", fontSize: "11px"}}><span className="font-mono">{stepName?.step_name ?? "Step name"}</span></Typography>
+        <Typography variant="caption" component={"p"} style={{lineHeight: "10px", padding: "3px", fontSize: "11px"}}>By: <span className="italic">{stepName?.ask_by ?? "Step name"}</span></Typography>
+        <Typography variant="caption" component={"p"} style={{lineHeight: "10px", padding: "3px", fontSize: "11px"}}>ImpRate: <span className="italic">{stepName?.ask_chance ?? "Step name"}</span></Typography>
       </Box>
       {/* Circle */}
       <Box onClick={()=> navigation("/code-editor", {state:{activeNodePont: element}})} className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"} w-15 h-15 rounded-full flex items-center justify-center cursor-pointer`}>

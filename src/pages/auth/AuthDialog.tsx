@@ -45,8 +45,8 @@ export const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: bool
     const response = await UserServices.signInUser({email: formData.email, password: formData.password});
     if(!response.error){
       toast.success('Login Success')
-      // Storing data into database.
-      dispatch(addLoginUser(response.user))
+      // Storing data into database.  
+      dispatch(addLoginUser(response?.data))
       handleClose() 
       navigate(DASHBOARD, { replace: true });
     }
@@ -58,7 +58,7 @@ export const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: bool
     if(!response.error){
       toast.success('Signup Success')
       // Storing data into database.
-      dispatch(addLoginUser(response.user));
+      dispatch(addLoginUser(response.data));
       handleClose();
       navigate(DASHBOARD, { replace: true });
     }

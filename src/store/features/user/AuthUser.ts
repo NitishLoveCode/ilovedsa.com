@@ -15,7 +15,6 @@ const authUser = createSlice({
     initialState,
     reducers: {
         addLoginUser(state, action: PayloadAction<IUser>){
-            console.log("hello boy", state)
             state.id = action.payload.id,
             state.userName = action.payload.userName,
             state.email = action.payload.email
