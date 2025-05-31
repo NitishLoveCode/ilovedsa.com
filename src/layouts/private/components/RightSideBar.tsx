@@ -1,9 +1,10 @@
-import { Box } from "@mui/material";
-import { Fragment, ReactNode } from "react";
-import AvatarView from "../../../components/AvatarView";
+import { Box, Button, Typography } from "@mui/material";
+import { Fragment, ReactNode, useState } from "react";
 import { AppContextType, useAppContext } from "../../../utils/AppContext";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import NightlightIcon from "@mui/icons-material/Nightlight";
+import { primaryColor} from "../../../constants/style";
+import CustomizedDialogs from "../../../components/CustomizedDialogs";
 
 
 
@@ -28,17 +29,43 @@ const ModeChanger = ({themeMode, setThemeMode}: AppContextType) => {
 
 function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNode;}) {
     const { themeMode, setThemeMode } = useAppContext();
+    const [switchSack, setSwitchSack] = useState(false);
+    
 
   return (
     <Fragment>
+      <CustomizedDialogs switchSack = {switchSack} setSwitchSack = {setSwitchSack}/>
       {loveMove && (
         <Box className="w-[75vw] h-screen overflow-y-auto">
 
-
-          <Box className="h-17 w-full justify-end flex pr-3">
-            <Box className = "flex items-center justify-center gap-5">
-                <ModeChanger setThemeMode={setThemeMode} themeMode={themeMode}/>
-                {/* <AvatarView /> */}
+          <Box className="pl-3 h-[69.5px] border-b-[0.5px] border-r-[0.5px] border-gray-500 border-0 w-full items-center justify-between flex pr-3">
+            <Box className = "flex flex-col">
+              <Box>
+                <Typography variant="caption" component={"p"}>Dsa for services base</Typography>
+              </Box>
+              <Box>
+                <Button
+                  onClick={() => setSwitchSack(!switchSack)}
+                  sx={{ 
+                  height: 30, 
+                  padding: '2px 10px', 
+                  minWidth: 'auto',
+                  color: 'gray',
+                  borderColor: 'gray',
+                   '&:hover': {
+                    color: primaryColor,
+                    borderColor: primaryColor,
+                    backgroundColor: 'transparent'
+                  }
+                  }} variant="outlined">Switch</Button>
+              </Box>
+            </Box>
+            
+            <Box>
+                <Box className = "flex items-center justify-center gap-5">
+                    <ModeChanger setThemeMode={setThemeMode} themeMode={themeMode}/>
+                    {/* <AvatarView /> */}
+                </Box>
             </Box>
           </Box>
 

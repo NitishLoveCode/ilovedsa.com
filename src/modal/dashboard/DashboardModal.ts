@@ -25,3 +25,11 @@ export interface IDsaStepsDsashboard extends Pick<IRegisterResponse, "error" | "
         responseData: IDsaSteps[][][];
     }
 }
+
+
+export interface iSwitchStackCard {
+    cardName: string;
+    numberOfSteps: number;
+    numberOfAttempts: number;
+    numberOfFinish: number
+}
