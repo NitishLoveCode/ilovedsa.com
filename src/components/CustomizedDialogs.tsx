@@ -9,6 +9,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Fragment } from 'react/jsx-runtime';
 import SwitchStackCard from './SwitchStackCard';
 import { Box } from '@mui/material';
+import { DashboardServices } from '../services/dashboard.Services/dashboard.Services';
+import { useEffect } from 'react';
+import { useAppSelector } from '../store/store';
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -21,14 +24,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSack: boolean, setSwitchSack: (setSwitchSack: boolean) => void}) {
-
-
+  const techStacks = useAppSelector((state) => state.stackSwitchSlice);
 
   return (
     <Fragment>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button> */}
       <BootstrapDialog
         onClose={() => setSwitchSack(!switchSack)}
         aria-labelledby="customized-dialog-title"
@@ -61,36 +60,18 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
 
 
           <Box className = "flex flex-wrap">
-            <SwitchStackCard
-              cardName='Dsa'
-              numberOfAttempts={89556}
-              numberOfFinish={55468}
-              numberOfSteps={40}
-            />
-            <SwitchStackCard
-              cardName='Dsa'
-              numberOfAttempts={89556}
-              numberOfFinish={55468}
-              numberOfSteps={40}
-            />
-            <SwitchStackCard
-              cardName='Dsa'
-              numberOfAttempts={89556}
-              numberOfFinish={55468}
-              numberOfSteps={40}
-            />
-              <SwitchStackCard
-                cardName='Dsa'
-                numberOfAttempts={89556}
-                numberOfFinish={55468}
-                numberOfSteps={40}
-              />
-              <SwitchStackCard
-                cardName='Dsa'
-                numberOfAttempts={89556}
-                numberOfFinish={55468}
-                numberOfSteps={40}
-              />
+
+            {
+              techStacks?.map((element, index) =>(
+                <SwitchStackCard
+                  key={index}
+                  cardName= {element.StackName}
+                  numberOfAttempts={element.numberOfAttempts}
+                  numberOfFinish={element.numberOfFinish}
+                  numberOfSteps={element.numberOfSteps}
+                />
+              ))
+            }
           </Box>
 
 

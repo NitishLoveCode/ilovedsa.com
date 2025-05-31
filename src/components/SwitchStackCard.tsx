@@ -15,20 +15,20 @@ function SwitchStackCard({cardName, numberOfSteps, numberOfAttempts, numberOfFin
           "& > :not(style)": {
             m: 1,
             width: 176,
-            height: 182,
+            height: 192,
           },
         }}
       >
-        <Paper className="p-2">
+        <Paper className="p-2 relative">
           <Box>
-            <Typography variant="subtitle1" component={"h2"}>
+            <Typography className="primary-color" style={{fontSize: 14}} component={"h2"}>
               {cardName}
             </Typography>
           </Box>
 
           <Box className="flex flex-col gap-2">
             <Box className="flex items-center gap-3">
-              <Typography variant="body2" component={"h2"}>
+              <Typography style={{fontSize: 12}} variant="body2" component={"h2"}>
                 Steps: {numberOfSteps}
               </Typography>
               <Chip
@@ -40,26 +40,26 @@ function SwitchStackCard({cardName, numberOfSteps, numberOfAttempts, numberOfFin
               />
             </Box>
             <Box className="flex items-center gap-2">
-              <Typography variant="body2" component={"h2"}>
+              <Typography style={{fontSize: 14}} variant="body2" component={"h2"}>
                 Attampts:
               </Typography>
               <Box className="flex items-center gap-0.5">
-                <Typography>{numberOfAttempts}</Typography>
-                <GroupsIcon />
+                <Typography style={{fontSize: 14}}>{numberOfAttempts}</Typography>
+                <GroupsIcon/>
               </Box>
             </Box>
             <Box className="flex items-center gap-2">
-              <Typography variant="body2" component={"h2"}>
+              <Typography style={{fontSize: 14}} variant="body2" component={"h2"}>
                 Finish:
               </Typography>
               <Box className="flex items-center gap-0.5">
-                <Typography>{numberOfFinish}</Typography>
+                <Typography style={{fontSize: 14}}>{numberOfFinish}</Typography>
                 <GroupsIcon />
               </Box>
             </Box>
           </Box>
 
-          <Box className="flex items-center justify-center mt-4">
+          <Box className="flex items-center justify-center absolute bottom-2">
             <Button
               onClick={() => ""}
               sx={{

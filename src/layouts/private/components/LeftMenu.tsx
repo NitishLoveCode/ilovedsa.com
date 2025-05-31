@@ -39,9 +39,6 @@ function LeftMenu({ loveMove }: { loveMove: boolean }) {
     }
   }
 
-  console.log("oooooooooo", location.pathname)
-
-
 
   return (
     <Fragment>

@@ -33,3 +33,16 @@ export interface iSwitchStackCard {
     numberOfAttempts: number;
     numberOfFinish: number
 }
+
+export interface ITechStackDataType {
+    id: number;
+    StackName: string;
+    numberOfSteps: number;
+    numberOfAttempts: number;
+    numberOfFinish: number;
+    stack_id: number;
+}
+
+export interface ITechStackList extends Pick<IRegisterResponse, "message" | "error"> {
+    data: ITechStackDataType[];
+}

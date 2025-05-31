@@ -5,6 +5,9 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import NightlightIcon from "@mui/icons-material/Nightlight";
 import { primaryColor} from "../../../constants/style";
 import CustomizedDialogs from "../../../components/CustomizedDialogs";
+import { DashboardServices } from "../../../services/dashboard.Services/dashboard.Services";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { addDataIntoStackSwitch } from "../../../store/features/dashboard/stackSwitchData";
 
 
 
@@ -28,9 +31,18 @@ const ModeChanger = ({themeMode, setThemeMode}: AppContextType) => {
 
 
 function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNode;}) {
-    const { themeMode, setThemeMode } = useAppContext();
-    const [switchSack, setSwitchSack] = useState(false);
-    
+  const { themeMode, setThemeMode } = useAppContext();
+  const [switchSack, setSwitchSack] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const data  = useAppSelector((state) => state.stackSwitchSlice);
+
+
+
+  const getSwitchStackData = async() =>{
+    const result = await DashboardServices.getTechStackList();
+    dispatch(addDataIntoStackSwitch(result.data));
+  }
 
   return (
     <Fragment>
@@ -45,7 +57,12 @@ function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNo
               </Box>
               <Box>
                 <Button
-                  onClick={() => setSwitchSack(!switchSack)}
+                  onClick={() => {
+                    setSwitchSack(!switchSack)
+                    if(data[0].StackName === ""){
+                      getSwitchStackData()
+                    }
+                  }}
                   sx={{ 
                   height: 30, 
                   padding: '2px 10px', 
