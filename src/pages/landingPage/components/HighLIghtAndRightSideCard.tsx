@@ -39,7 +39,8 @@ function HighLIghtAndRightSideCard() {
     
         <div className='absolute -right-28 -top-40'>
             <div className="w-90 ml-20 h-38 mt-18 -rotate-24 rounded-l-full overflow-hidden right-0 background-color-primary">
-                
+                <h1 className='text-6xl ml-18 mt-3 font-bold'>Master</h1>
+                <p className='text-6xl ml-9 font-extrabold'>DSA</p>
             </div>
         </div>
     
