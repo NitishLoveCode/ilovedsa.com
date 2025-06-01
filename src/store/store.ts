@@ -14,6 +14,7 @@ import currentProblomsSolvingStatus from "./features/CurrentProblomsSolvingStatu
 import authUser from "./features/user/AuthUser";
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import addDsaStepsSlice from './features/dashboard/dsaSteps';
+import stackSwitchSlice from "./features/dashboard/stackSwitchData";
 
 
 
@@ -21,14 +22,15 @@ import addDsaStepsSlice from './features/dashboard/dsaSteps';
 const rootReducer = combineReducers({
   currentProblomsSolvingStatus,
   authUser, 
-  addDsaStepsSlice
+  addDsaStepsSlice,
+  stackSwitchSlice
 });
 
 // Config for persist
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['authUser', "addDsaStepsSlice"] // only persist authUser
+  whitelist: ['authUser', "addDsaStepsSlice", "stackSwitchSlice"] // only persist authUser
   // blacklist: ['counter'] // everything EXCEPT `counter` will be persisted
 
 };

@@ -6,3 +6,4 @@ export const SIGNIN_AUTH: string = import.meta.env.VITE_SIGNIN_AUTH;
 // DASHBOARD CONSTANTS..
 export const DASHBOARD: string = import.meta.env.VITE_DASHBOARD;
 export const DSA_STEPS: string = import.meta.env.VITE_DSA_STEPS;
+export const TECH_STACK_List: string = import.meta.env.VITE_TECH_STACK;
