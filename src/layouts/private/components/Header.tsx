@@ -1,7 +1,6 @@
-import { Box, Drawer } from "@mui/material";
+import { Box } from "@mui/material";
 import logo from "../../../assets/logo/ilovedsalogo.png";
 import { useAppContext } from "../../../utils/AppContext";
-import AvatarView from "../../../components/AvatarView";
 import { useState } from "react";
 import AccountMenu from "../../../components/AccountMenu";
 
@@ -13,7 +12,6 @@ function Header({
   loveMove: boolean;
 }) {
   const [showUser, setShowUser] = useState<boolean>(false);
-  const [profileMenu, setProfileMenu] = useState(false);
   const { themeMode } = useAppContext();
 
   setTimeout(() => {

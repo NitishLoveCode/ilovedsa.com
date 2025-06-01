@@ -28,10 +28,12 @@ export interface IDsaStepsDsashboard extends Pick<IRegisterResponse, "error" | "
 
 
 export interface iSwitchStackCard {
+    handleSwitchStack: (stackId: number) => void
     cardName: string;
     numberOfSteps: number;
     numberOfAttempts: number;
-    numberOfFinish: number
+    numberOfFinish: number;
+    stackId: number;
 }
 
 export interface ITechStackDataType {

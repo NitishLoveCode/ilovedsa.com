@@ -9,9 +9,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Fragment } from 'react/jsx-runtime';
 import SwitchStackCard from './SwitchStackCard';
 import { Box } from '@mui/material';
-import { DashboardServices } from '../services/dashboard.Services/dashboard.Services';
-import { useEffect } from 'react';
 import { useAppSelector } from '../store/store';
+import { DashboardServices } from '../services/dashboard.Services/dashboard.Services';
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -25,6 +24,32 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSack: boolean, setSwitchSack: (setSwitchSack: boolean) => void}) {
   const techStacks = useAppSelector((state) => state.stackSwitchSlice);
+
+  // Invoke function object.
+  const invokeFunctionObj = [
+    {
+      stackId: 1,
+      stackName: "DSA",
+      getDataFromApi: DashboardServices.getDsaSteps()
+    },
+    {
+      stackId: 2,
+      stackName: "Targeted Services Based Company DSA",
+      getDataFromApi: DashboardServices.getDsaForServicesBase()
+    }
+  ]
+
+
+
+  const handleSwitchStack = async(stackId: number) =>{
+    console.log("helloooo",  stackId)
+  }
+
+
+
+
+
+
 
   return (
     <Fragment>
@@ -64,11 +89,13 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
             {
               techStacks?.map((element, index) =>(
                 <SwitchStackCard
+                  handleSwitchStack = {handleSwitchStack}
                   key={index}
                   cardName= {element.StackName}
                   numberOfAttempts={element.numberOfAttempts}
                   numberOfFinish={element.numberOfFinish}
                   numberOfSteps={element.numberOfSteps}
+                  stackId = {element.stack_id}
                 />
               ))
             }
