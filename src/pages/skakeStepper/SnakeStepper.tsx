@@ -1,54 +1,20 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import Step from "./Step";
 import { Box } from "@mui/material";
-import { DashboardServices } from "../../services/dashboard.Services/dashboard.Services";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { addDsaStepsSlice } from "../../store/features/dashboard/dsaSteps";
-import { IDashboardStateInfo } from "../../modal/dashboard/DashboardModal";
+import { useAppSelector } from "../../store/store";
 
 
 
 
 export default function SnakeStepper() {
-  const [dsaStepData, setDsaStepData] = useState<IDashboardStateInfo>({
-    activityLog: {
-        dsa_steps: 0,
-        dsa_sub_steps: 0
-      },
-    dsaSteps: []
-  })
-  const dispatch = useAppDispatch()
-
-  const storedDsaSteps = useAppSelector((state) => state.addDsaStepsSlice)
-  
-
-  // Get Dsa steps Data
-  const getDsaSteps = async() =>{
-    const response = await DashboardServices.getDsaSteps();
-    dispatch(addDsaStepsSlice(response)) // Saving data in redux.
-    setDsaStepData({
-      activityLog: response.data.activityLog,
-      dsaSteps: response.data.responseData
-    })
-  }
-
-  useEffect(() =>{    
-    if(storedDsaSteps.dsaStepsSlice.length === 1){
-      getDsaSteps();
-    }else{
-      setDsaStepData({
-        activityLog: storedDsaSteps.activityLog,
-        dsaSteps: storedDsaSteps.dsaStepsSlice
-      });
-    }
-  }, [])
+  const storedDsaSteps = useAppSelector((state) => state.techStackStepSlice)
 
 
   return (
     <Fragment>
       <Box className="flex m-5">
         <Box className="flex flex-col py-30 gap-26 w-fit">
-          {dsaStepData.dsaSteps?.map((row, rowIndex) => (
+          {storedDsaSteps[0].techStackData.responseData?.map((row, rowIndex) => (
             <Box key={rowIndex} className="flex gap-[5vw]">
               {row.map((step, stepIndex) => (
                 <Step
@@ -59,8 +25,8 @@ export default function SnakeStepper() {
                   isVeryLastElement={stepIndex}
                   isFirstElement={stepIndex === 0}
                   isEvenRow={rowIndex % 2 === 0}
-                  isLastRow={rowIndex === dsaStepData.dsaSteps.length - 1}
-                  activeNode={dsaStepData.activityLog.dsa_steps - 1}
+                  isLastRow={rowIndex === storedDsaSteps[0].techStackData.responseData.length - 1}
+                  activeNode={storedDsaSteps[0].techStackData.activityLog.dsa_steps - 1}
                   stepName = {step[0]}
                 />
               ))}

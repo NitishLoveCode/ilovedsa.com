@@ -11,6 +11,9 @@ import SwitchStackCard from './SwitchStackCard';
 import { Box } from '@mui/material';
 import { useAppSelector } from '../store/store';
 import { DashboardServices } from '../services/dashboard.Services/dashboard.Services';
+import { useDispatch } from 'react-redux';
+import { addTechStackStepSlice, takeSelectedStack0thPosition } from '../store/features/dashboard/techStackStepSlice';
+import { useEffect } from 'react';
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -23,33 +26,59 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSack: boolean, setSwitchSack: (setSwitchSack: boolean) => void}) {
-  const techStacks = useAppSelector((state) => state.stackSwitchSlice);
+  const {stackSwitchSlice, techStackStepSlice} = useAppSelector((state) => state);
+  const dispatch = useDispatch()
 
   // Invoke function object.
   const invokeFunctionObj = [
     {
       stackId: 1,
       stackName: "DSA",
-      getDataFromApi: DashboardServices.getDsaSteps()
+      getDataFromApi: DashboardServices.getDsaSteps
     },
     {
       stackId: 2,
       stackName: "Targeted Services Based Company DSA",
-      getDataFromApi: DashboardServices.getDsaForServicesBase()
+      getDataFromApi: DashboardServices.getDsaForServicesBase
     }
   ]
 
 
 
   const handleSwitchStack = async(stackId: number) =>{
-    console.log("helloooo",  stackId)
+
+    /**
+     * If stack already present in slice then make that TechStack Data at frist position
+     * and Avoid calling API.
+     */
+    let isPresent = false;
+    techStackStepSlice.forEach((element) =>{
+      if(element.stackId === stackId){
+        // Take selected TechStack at frist position
+        dispatch(takeSelectedStack0thPosition(stackId))
+        isPresent = true;
+        return;
+      }
+    })
+    if(isPresent){
+      setSwitchSack(!switchSack) // Closing TechStach popUp
+      return;
+    }
+
+    // Finding stack if stack is not present in tack-stack.
+    const getStackData = invokeFunctionObj.find((element) => element.stackId === stackId);
+    const response = await getStackData?.getDataFromApi();
+    const stackTimeLineData = {
+      stackId: stackId,
+      techStackData: response!
+    }
+    dispatch(addTechStackStepSlice(stackTimeLineData))
+    setSwitchSack(!switchSack) // Closing TechStach popUp
   }
 
-
-
-
-
-
+  useEffect(() =>{
+   handleSwitchStack(1)
+  },[])
 
   return (
     <Fragment>
@@ -82,12 +111,10 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
         </IconButton>
         <DialogContent dividers>
 
-
-
           <Box className = "flex flex-wrap">
 
             {
-              techStacks?.map((element, index) =>(
+              stackSwitchSlice?.map((element, index) =>(
                 <SwitchStackCard
                   handleSwitchStack = {handleSwitchStack}
                   key={index}
@@ -101,11 +128,12 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
             }
           </Box>
 
-
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={() => setSwitchSack(!switchSack)}>
-            Save
+          <Button autoFocus onClick={() => {
+            setSwitchSack(!switchSack)
+          }}>
+            Close
           </Button>
         </DialogActions>
       </BootstrapDialog>

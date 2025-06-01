@@ -26,6 +26,11 @@ export interface IDsaStepsDsashboard extends Pick<IRegisterResponse, "error" | "
     }
 }
 
+export interface IAddTechStackStepSlice {
+    stackId: number,
+    techStackData: Pick<IDsaStepsDsashboard, "data">
+}
+
 
 export interface iSwitchStackCard {
     handleSwitchStack: (stackId: number) => void
