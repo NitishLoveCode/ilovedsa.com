@@ -49,6 +49,9 @@ export const AuthDialog = ({open, setOpen}:{open: boolean, setOpen:(parama: bool
       dispatch(addLoginUser(response?.data))
       handleClose() 
       navigate(DASHBOARD, { replace: true });
+      return;
+    }else{
+      toast.error(response.message)
     }
   }
 

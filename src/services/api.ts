@@ -17,7 +17,11 @@ export const getRequest = async <T>(url: string): Promise<T> => {
  * @returns Promise resolving to type T
  */
 export const postRequest = async <T, D = unknown>(url: string, data: D): Promise<T> => {
+  console.log("i am root")
+  // if(response.status === )
   const response = await axiosInstance.post<T>(url, data);
+  console.log("qqqqq",response)
+  console.log("Hello is it commmint")
   return response.data;
 };
 

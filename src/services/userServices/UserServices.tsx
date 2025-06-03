@@ -13,7 +13,9 @@ export class UserServices {
   };
 
   public static signInUser = async (signInData: Pick<userDetailsForm, "email" | "password">): Promise<IRegisterResponse> => {
+    console.log("i am here.")
     const response: IRegisterResponse = await postRequest(SIGNIN_AUTH, signInData)
+    console.log("is ti claling..  ")
     return response;
   };
 
