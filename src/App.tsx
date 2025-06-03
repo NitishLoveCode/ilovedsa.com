@@ -9,6 +9,13 @@ import { useAppContext } from "./utils/AppContext";
 function App() {
   const {themeMode} = useAppContext();
 
+  console.log("Nitish kumar............")
+  console.log("Nitish kumar............")
+  console.log("Nitish kumar............")
+  console.log("Nitish kumar............")
+  console.log("Nitish kumar............")
+  console.log("Nitish kumar............")
+
   const theme = getTheme(themeMode);
 
   return (
