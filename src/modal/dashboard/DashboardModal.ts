@@ -4,8 +4,8 @@ export type IDsaSteps = {
     id: number;
     step: number;
     step_name: string;
-    ask_by: string;
-    ask_chance: string;
+    ask_by?: string;
+    ask_chance?: string;
 }
 
 export interface IActivityLogAttributes {

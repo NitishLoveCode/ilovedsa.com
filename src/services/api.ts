@@ -5,8 +5,8 @@ import axiosInstance from './Instance';
  * @param url - The endpoint to fetch data from
  * @returns Promise resolving to type T
  */
-export const getRequest = async <T>(url: string): Promise<T> => {
-  const response = await axiosInstance.get<T>(url);
+export const getRequest = async <T>(url: string, params?: any): Promise<T> => {
+  const response = await axiosInstance.get<T>(url, {params});
   return response.data;
 };
 

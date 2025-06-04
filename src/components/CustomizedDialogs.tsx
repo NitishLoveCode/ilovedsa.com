@@ -14,6 +14,8 @@ import { DashboardServices } from '../services/dashboard.Services/dashboard.Serv
 import { useDispatch } from 'react-redux';
 import { addTechStackStepSlice, takeSelectedStack0thPosition } from '../store/features/dashboard/techStackStepSlice';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DASHBOARD } from '../navigation/CONSTANTS';
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -28,6 +30,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSack: boolean, setSwitchSack: (setSwitchSack: boolean) => void}) {
   const {stackSwitchSlice, techStackStepSlice} = useAppSelector((state) => state);
   const dispatch = useDispatch()
+  const navigation = useNavigate();
 
   // Invoke function object.
   const invokeFunctionObj = [
@@ -62,6 +65,7 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
     })
     if(isPresent){
       setSwitchSack(!switchSack) // Closing TechStach popUp
+      navigation(DASHBOARD)
       return;
     }
 
@@ -74,6 +78,8 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
     }
     dispatch(addTechStackStepSlice(stackTimeLineData))
     setSwitchSack(!switchSack) // Closing TechStach popUp
+    navigation(DASHBOARD)
+
   }
 
   useEffect(() =>{

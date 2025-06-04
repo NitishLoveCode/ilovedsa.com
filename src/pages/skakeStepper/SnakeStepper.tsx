@@ -19,6 +19,7 @@ export default function SnakeStepper() {
               {row.map((step, stepIndex) => (
                 <Step
                   key={`${rowIndex}-${stepIndex}`}
+                  stackId={storedDsaSteps[0].stackId}
                   element={step[0].step}
                   rowLength={row.length}
                   isLastElement={stepIndex === row.length - 1}

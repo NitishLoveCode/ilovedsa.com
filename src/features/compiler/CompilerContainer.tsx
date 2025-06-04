@@ -7,17 +7,40 @@ import Step from "../../pages/skakeStepper/Step";
 import { useLocation } from "react-router-dom";
 import { globelStepper, IglobelStepper} from "../../constants/GlobleStepper";
 import {updateCurrentProblomsSolvingStatus} from "../../store/features/CurrentProblomsSolvingStatus/currentProblomsSolvingStatus";
-import {useAppDispatch} from "../../store/store";
+import {useAppDispatch, useAppSelector} from "../../store/store";
 import { IProbloms } from "../../modal/compiler";
+import { StepDataFinder } from "../../services/stepFinder.Services/stepData.services";
+import { stackNodeInfo } from "../../modal/stepFinder/codeFinder";
+
+
+
 
 function CompilerContainer() {
   const [code, setCode] = useState<string>("");
+  const [setpData, setStepData] = useState<stackNodeInfo[]>()
+  const [activeProblom, setActiveProbloms] = useState<number>(0)
   const location   = useLocation();
-  const [problomsSet, setProblomsSet] = useState<any>();
-  const [stepTrack, setStepTrack] = useState<number>(0);
-  // Current Master step.
-  const {activeNodePont} = location.state || {}; 
   const dispatch = useAppDispatch();
+
+
+  // Finding user selected Tech-Stack id.
+  const {stackId} = useAppSelector((state) => state.techStackStepSlice[0]);
+
+
+
+
+  const findingAllStepsInfo = async() =>{
+    // Calling APi for get step All step Question.
+    const response = await StepDataFinder.getAllStepInfoOfSelectedStackNode({stackId, stepid: location.state.activeNodePont}); // techStack id and techStack StepId.
+    setStepData(response.data)
+
+    // Finding probloms for then frist time when API get fired.
+    const probloms = await StepDataFinder.getProblomsByid(response.data[0].id); // Heating API to get Probloms for the frist time.
+    setActiveProbloms(0);
+    dispatch(updateCurrentProblomsSolvingStatus(probloms.data[0]));
+    setCode(probloms.data[0].starter_code);
+  }
+  
 
   
 
@@ -33,33 +56,24 @@ function CompilerContainer() {
   };
 
 
-  const row: number[] = [1,2,3,4,5,6,7,8,9,10]
   const costomStyle = {
     middleLine: "9",
   }
 
+  const switchQuestion = async(problomsId: number) =>{ // you will get here on node click
+    console.log("Hello probloms man", problomsId)
 
-  // Finding Probloms set for step.
-  const problomsFinder = () =>{
-    const findSet = globelStepper.find((element: IglobelStepper) => element.step === activeNodePont)
-    setProblomsSet(findSet);
-    // This will only configure only for the frist time.
-    const currentProbloms = findSet?.stepProbloms[0]; // Probloms starting from no 1.
-    dispatch(updateCurrentProblomsSolvingStatus(currentProbloms!));
-    setCode(currentProbloms?.starterCode!);
-  };
-
-  const switchQuestion = (stepSwitch: number) =>{
-    setStepTrack(stepSwitch-1);
-    const currentProbloms:IProbloms = problomsSet?.stepProbloms[stepSwitch-1];
-    dispatch(updateCurrentProblomsSolvingStatus(currentProbloms!));
-    setCode(currentProbloms?.starterCode!);
+    // find probloms via database.
+    const probloms = await StepDataFinder.getProblomsByid(problomsId);
+    setActiveProbloms(problomsId-1);
+    dispatch(updateCurrentProblomsSolvingStatus(probloms.data[0]));
+    setCode(probloms.data[0].starter_code);
   }
-  
-
-  useEffect(()=>{
-    problomsFinder();
-  },[]);
+    
+    
+  useEffect(() =>{
+    findingAllStepsInfo()
+  },[])
   
   
 
@@ -67,19 +81,20 @@ function CompilerContainer() {
     <Fragment>  
       <Box className="m-5 mt-20">
         <Box className="flex w-[70vw] justify-between">
-          {row.map((step, stepIndex) => (
+          {setpData && setpData.map((step, stepIndex) => (
             <Step
               key = {`${stepIndex}-${stepIndex}`}
-              element = {step}
-              rowLength = {row.length}
-              isLastElement = {stepIndex === row.length - 1}
+              element = {step.id}
+              rowLength = {setpData.length}
+              isLastElement = {stepIndex === setpData.length - 1}
               isVeryLastElement = {stepIndex}
               isFirstElement = {stepIndex === 0}
               isEvenRow = {0 % 2 === 0}
-              isLastRow = {row.length -1 === stepIndex}
-              activeNode = {stepTrack}
+              isLastRow = {setpData.length -1 === stepIndex}
+              activeNode = {activeProblom}
               costomStyle = {costomStyle}
               onClick={switchQuestion}
+              stepName={{id: step.id, step: step.position, step_name: step.short_title}}
             />
           ))}
         </Box>
