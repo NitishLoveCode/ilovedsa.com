@@ -4,8 +4,8 @@ export type IDsaSteps = {
     id: number;
     step: number;
     step_name: string;
-    ask_by: string;
-    ask_chance: string;
+    ask_by?: string;
+    ask_chance?: string;
 }
 
 export interface IActivityLogAttributes {
@@ -26,12 +26,19 @@ export interface IDsaStepsDsashboard extends Pick<IRegisterResponse, "error" | "
     }
 }
 
+export interface IAddTechStackStepSlice {
+    stackId: number,
+    techStackData: Pick<IDsaStepsDsashboard, "data">
+}
+
 
 export interface iSwitchStackCard {
+    handleSwitchStack: (stackId: number) => void
     cardName: string;
     numberOfSteps: number;
     numberOfAttempts: number;
-    numberOfFinish: number
+    numberOfFinish: number;
+    stackId: number;
 }
 
 export interface ITechStackDataType {

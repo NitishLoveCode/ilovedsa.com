@@ -5,7 +5,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { iSwitchStackCard } from "../modal/dashboard/DashboardModal";
 
-function SwitchStackCard({cardName, numberOfSteps, numberOfAttempts, numberOfFinish}: iSwitchStackCard) {
+function SwitchStackCard({handleSwitchStack, stackId,  cardName, numberOfSteps, numberOfAttempts, numberOfFinish}: iSwitchStackCard) {
   return (
     <Box className="flex wrap-normal gap-5">
       <Box
@@ -61,7 +61,7 @@ function SwitchStackCard({cardName, numberOfSteps, numberOfAttempts, numberOfFin
 
           <Box className="flex items-center justify-center absolute bottom-2">
             <Button
-              onClick={() => ""}
+              onClick={() => handleSwitchStack(stackId)}
               sx={{
                 height: 30,
                 width: 160,

@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProbloms } from "../../../modal/compiler";
+import { IProbloms, IProblomsType } from "../../../modal/compiler";
 
 
 
-const initialState: IProbloms = {
-    id: 0,
-    title: "",
+const initialState: IProblomsType = {
     description: "",
-    starterCode: ``
+    position: Number.MAX_VALUE,
+    starter_code: "",
+    title: ""
 }
 
 
@@ -15,11 +15,11 @@ const currentProblomsSolvingStatus = createSlice({
     name: "currentProblomsSolvingStatus",
     initialState,
     reducers:{
-        updateCurrentProblomsSolvingStatus(state, action: PayloadAction<IProbloms>){
-            state.id = action.payload.id,
-            state.description = action.payload.description,
-            state.starterCode = action.payload.starterCode,
-            state.title = action.payload.title
+        updateCurrentProblomsSolvingStatus(state, action: PayloadAction<IProblomsType>){
+            state.description = action.payload.description;
+            state.position = action.payload.position;
+            state.starter_code = action.payload.starter_code;
+            state.title = action.payload.title;
         }
     }
 })

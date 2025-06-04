@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import currentProblomsSolvingStatus from "./features/CurrentProblomsSolvingStatus/currentProblomsSolvingStatus";
 import authUser from "./features/user/AuthUser";
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import addDsaStepsSlice from './features/dashboard/dsaSteps';
+import techStackStepSlice from './features/dashboard/techStackStepSlice';
 import stackSwitchSlice from "./features/dashboard/stackSwitchData";
 
 
@@ -22,15 +22,15 @@ import stackSwitchSlice from "./features/dashboard/stackSwitchData";
 const rootReducer = combineReducers({
   currentProblomsSolvingStatus,
   authUser, 
-  addDsaStepsSlice,
-  stackSwitchSlice
+  techStackStepSlice,
+  stackSwitchSlice // List of tech-stack to switch.
 });
 
 // Config for persist
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['authUser', "addDsaStepsSlice", "stackSwitchSlice"] // only persist authUser
+  whitelist: ['authUser', "stackSwitchSlice"] // only persist authUser
   // blacklist: ['counter'] // everything EXCEPT `counter` will be persisted
 
 };
