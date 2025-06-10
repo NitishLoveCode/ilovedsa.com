@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import CodeEditor from "./component/CodeEditor";
 import Output from "./component/Output";
-import { Box} from "@mui/material";
+import { Box, Typography} from "@mui/material";
 import { runCodeInBrowser } from "../../services/comilerServices/JavaScriptCompilerServices";
 import Step from "../../pages/skakeStepper/Step";
 import { useLocation } from "react-router-dom";
@@ -48,6 +48,7 @@ function CompilerContainer() {
     // Making blank.
     document.getElementById("output")!.innerText = "";
     const Executedoutput = runCodeInBrowser(code);
+    console.log("***************", Executedoutput)
     setTimeout(() =>{
       document.getElementById("output")!.innerText += Executedoutput + "\n";
     },100)
@@ -81,6 +82,14 @@ function CompilerContainer() {
     <Fragment>  
       <Box className="m-5 mt-20">
         <Box className="flex w-[70vw] justify-between">
+
+
+          {
+            location.pathname === "/compiler" ? <Typography variant="h5">Online Compiler</Typography> : 
+          
+
+          <>
+
           {setpData && setpData.map((step, stepIndex) => (
             <Step
               key = {`${stepIndex}-${stepIndex}`}
@@ -97,6 +106,10 @@ function CompilerContainer() {
               stepName={{id: step.id, step: step.position, step_name: step.short_title}}
             />
           ))}
+          
+          </>
+
+          }
         </Box>
       </Box>
 
