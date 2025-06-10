@@ -4,7 +4,7 @@ import SnakeStepper from "../pages/skakeStepper/SnakeStepper";
 import CompilerContainer from "../features/compiler/CompilerContainer";
 import LandingPage from "../pages/landingPage/LandingPage";
 import PrivateLayout from "../layouts/private/PrivateLayout";
-import { APP, CODE_EDITOR, DASHBOARD, HOME } from "./CONSTANTS";
+import { APP, CODE_EDITOR, COMPILER, DASHBOARD, HOME } from "./CONSTANTS";
 
 function RoutingConfig() {
   return (
@@ -20,6 +20,7 @@ function RoutingConfig() {
       <Route element={<PrivateLayout />}>
         <Route key={1} path={DASHBOARD} element={<SnakeStepper />} />
         <Route key={2} path={CODE_EDITOR} element={<CompilerContainer />} />
+        <Route key={2} path={COMPILER} element={<CompilerContainer />} />
       </Route>
     </Routes>
   );

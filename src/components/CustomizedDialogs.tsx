@@ -77,7 +77,7 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
       techStackData: response!
     }
     dispatch(addTechStackStepSlice(stackTimeLineData))
-    setSwitchSack(!switchSack) // Closing TechStach popUp
+    // setSwitchSack(!switchSack) // Closing TechStach popUp
     navigation(DASHBOARD)
 
   }
@@ -86,6 +86,8 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
    handleSwitchStack(1)
   },[])
 
+
+  
   return (
     <Fragment>
       <BootstrapDialog

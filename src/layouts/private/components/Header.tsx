@@ -19,16 +19,8 @@ function Header({
   }, 3500);
 
   return (
-    <Box
-      className={`${
-        themeMode === "dark"
-          ? "border-b-[0.5px] border-r-[0.5px] border-gray-500"
-          : "bg-gradient-to-r from-amber-500 to-pink-500"
-      } flex gap-10 justify-center items-center
-      transition-all duration-900 ${
-        moveLeft ? "w-[25vw] h-[10vh]" : "w-screen h-screen items-center"
-      }`}
-    >
+   <Box className={`${themeMode === "dark" ? "border-b-[0.5px] border-r-[0.5px] border-gray-500" : "bg-gradient-to-r from-amber-500 to-pink-500"} flex justify-center
+      transition-all duration-900 ${moveLeft ? "w-[25vw] h-[10vh]" : "w-screen h-screen items-center"}`}>
       <Box className="relative">
         <img className="h-14" src={logo} alt="ilovedsa.com" />
         <Box
