@@ -8,8 +8,9 @@ type IcostomStyle = {
 }
 
 interface StepProps {
-  stackId?: number
+  stackId?: number;
   element: number;
+  stepPosition?: number;
   isLastElement: boolean;
   isFirstElement: boolean;
   isEvenRow: boolean;
@@ -25,6 +26,7 @@ interface StepProps {
 function Step({ 
   stackId,
   element, 
+  stepPosition,
   isLastElement, 
   isFirstElement, 
   isEvenRow, 
@@ -74,7 +76,7 @@ function Step({
       </Box>
       {/* Circle */}
       <Box onClick={()=> handleNodeClick({element})} className={`${activeNode >= element ? "bg-green-500" : "bg-amber-500"} w-15 h-15 rounded-full flex items-center justify-center cursor-pointer`}>
-        <h1 className="z-20 text-3xl text-white">{element}</h1>
+        <h1 className="z-20 text-3xl text-white">{stepPosition ?? element}</h1>
         {
           activeNode + 1 === element && <Box className="absolute z-50 h-30 text-2xl top-0 animate-bounce">❤️</Box>
         }

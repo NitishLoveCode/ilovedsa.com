@@ -1,16 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
-import CodeEditor from "./component/CodeEditor";
-import Output from "./component/Output";
 import { Box, Typography} from "@mui/material";
 import { runCodeInBrowser } from "../../services/comilerServices/JavaScriptCompilerServices";
 import Step from "../../pages/skakeStepper/Step";
 import { useLocation } from "react-router-dom";
-import { globelStepper, IglobelStepper} from "../../constants/GlobleStepper";
 import {updateCurrentProblomsSolvingStatus} from "../../store/features/CurrentProblomsSolvingStatus/currentProblomsSolvingStatus";
 import {useAppDispatch, useAppSelector} from "../../store/store";
-import { IProbloms } from "../../modal/compiler";
 import { StepDataFinder } from "../../services/stepFinder.Services/stepData.services";
 import { stackNodeInfo } from "../../modal/stepFinder/codeFinder";
+import CodeEditor from "./component/CodeEditor";
+import Output from "./component/Output";
 
 
 
@@ -48,7 +46,6 @@ function CompilerContainer() {
     // Making blank.
     document.getElementById("output")!.innerText = "";
     const Executedoutput = runCodeInBrowser(code);
-    console.log("***************", Executedoutput)
     setTimeout(() =>{
       document.getElementById("output")!.innerText += Executedoutput + "\n";
     },100)
@@ -62,7 +59,6 @@ function CompilerContainer() {
   }
 
   const switchQuestion = async(problomsId: number) =>{ // you will get here on node click
-    console.log("Hello probloms man", problomsId)
 
     // find probloms via database.
     const probloms = await StepDataFinder.getProblomsByid(problomsId);
@@ -80,8 +76,8 @@ function CompilerContainer() {
 
   return (
     <Fragment>  
-      <Box className="m-5 mt-20">
-        <Box className="flex w-[70vw] justify-between">
+      <Box className="h-40 mt-2 overflow-x-scroll overflow-y-hidden hide-scrollbar">
+        <Box className="flex w-[70vw] gap-[6vw] mt-20 ml-5">
 
 
           {
@@ -94,6 +90,7 @@ function CompilerContainer() {
             <Step
               key = {`${stepIndex}-${stepIndex}`}
               element = {step.id}
+              stepPosition = {step.position}
               rowLength = {setpData.length}
               isLastElement = {stepIndex === setpData.length - 1}
               isVeryLastElement = {stepIndex}
@@ -113,7 +110,7 @@ function CompilerContainer() {
         </Box>
       </Box>
 
-      <Box className="flex m-2 justify-between">
+      <Box className="flex ml-2 mr-2 justify-between">
         <CodeEditor code = {code} setCode = {setCode} />
         <Output onClick = {runCode} />
       </Box>
