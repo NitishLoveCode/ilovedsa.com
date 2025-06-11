@@ -11,9 +11,6 @@ function CodeEditor({code, setCode}: {code: string, setCode:(value: string)=> vo
   const editorRef = useRef<monacoEditor.editor.IStandaloneCodeEditor | null>(null);
   const [language, setLanguage] = useState<keyof typeof CODE_SNIPPETS>("javascript");
 
-  const tempCode =       "function reverseString(str) {\n  // calidddddd hhhhhhhHey coder, write your code from here. \n}\n\n console.log(reverseString('hello'));"
-  console.log("i am comming from server.", {code, tempCode})
-
 
   const onMount: OnMount = (editor) => {
     editorRef.current = editor;
@@ -67,7 +64,7 @@ function CodeEditor({code, setCode}: {code: string, setCode:(value: string)=> vo
             language={language}
             defaultValue={CODE_SNIPPETS[language]}
             onMount={onMount}
-            value={tempCode}
+            value={code}
             onChange={(value) => setCode(value!)}
           />
         </Box>
