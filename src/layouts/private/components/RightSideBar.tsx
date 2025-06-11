@@ -48,12 +48,12 @@ function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNo
     <Fragment>
       <CustomizedDialogs switchSack = {switchSack} setSwitchSack = {setSwitchSack}/>
       {loveMove && (
-        <Box className="w-[75vw] h-screen overflow-y-auto">
+        <Box className="w-[75vw] h-screen overflow-x-hidden">
 
           <Box className="pl-3 h-[69.5px] border-b-[0.5px] border-r-[0.5px] border-gray-500 border-0 w-full items-center justify-between flex pr-3">
             <Box className = "flex flex-col">
               <Box>
-                <Typography variant="caption" component={"p"}>Dsa for services base</Typography>
+                <Typography variant="caption" component={"p"}>Switch Stack</Typography>
               </Box>
               <Box>
                 <Button
@@ -67,8 +67,8 @@ function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNo
                   height: 30, 
                   padding: '2px 10px', 
                   minWidth: 'auto',
-                  color: 'gray',
-                  borderColor: 'gray',
+                  color: 'white',
+                  borderColor: 'GrayText',
                    '&:hover': {
                     color: primaryColor,
                     borderColor: primaryColor,

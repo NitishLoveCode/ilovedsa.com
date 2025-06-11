@@ -39,7 +39,7 @@ function PrivateLayout() {
 
   return (
     <Fragment>
-      <Box className="flex relative">
+      <Box className="flex relative ">
         <Box className="w-[25vw]">
           <Header loveMove={loveMove} moveLeft={moveLeft} />
           <LeftMenu loveMove={loveMove} />

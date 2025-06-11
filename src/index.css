@@ -28,3 +28,12 @@
   border-radius: 8px;
   border: 2px solid #1e1e1e;
 }
+
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
