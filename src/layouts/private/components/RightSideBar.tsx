@@ -50,7 +50,7 @@ function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNo
       {loveMove && (
         <Box className="w-[75vw] h-screen overflow-x-hidden">
 
-          <Box className="pl-3 h-[69.5px] border-b-[0.5px] border-r-[0.5px] border-gray-500 border-0 w-full items-center justify-between flex pr-3">
+          <Box className="pl-3 h-[72.5px] border-b-[0.5px] border-r-[0.5px] border-gray-500 border-0 w-full items-center justify-between flex pr-3">
             <Box className = "flex flex-col">
               <Box>
                 <Typography variant="caption" component={"p"}>Switch Stack</Typography>
@@ -67,7 +67,7 @@ function RightSideBar({loveMove,children}: {loveMove: boolean; children: ReactNo
                   height: 30, 
                   padding: '2px 10px', 
                   minWidth: 'auto',
-                  color: 'white',
+                  color: 'gray',
                   borderColor: 'GrayText',
                    '&:hover': {
                     color: primaryColor,

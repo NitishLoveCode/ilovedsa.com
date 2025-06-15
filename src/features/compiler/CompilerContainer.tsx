@@ -29,12 +29,14 @@ function CompilerContainer() {
 
   const findingAllStepsInfo = async() =>{
     // Calling APi for get step All step Question.
-    const response = await StepDataFinder.getAllStepInfoOfSelectedStackNode({stackId, stepid: location.state.activeNodePont}); // techStack id and techStack StepId.
+    
+    const response = await StepDataFinder.getAllStepInfoOfSelectedStackNode({stackId: location.state.activeNodePont, stepid: 1}); // techStack id and techStack StepId.
     setStepData(response.data)
 
     // Finding probloms for then frist time when API get fired.
     const probloms = await StepDataFinder.getProblomsByid(response.data[0].id); // Heating API to get Probloms for the frist time.
-    setActiveProbloms(0);
+    console.log("iam am probloms need to solution",probloms)
+    setActiveProbloms(response.data[0].id -1);
     dispatch(updateCurrentProblomsSolvingStatus(probloms.data[0]));
     setCode(probloms.data[0].starter_code);
   }
@@ -59,6 +61,8 @@ function CompilerContainer() {
   }
 
   const switchQuestion = async(problomsId: number) =>{ // you will get here on node click
+
+    console.log("***************88", problomsId)
 
     // find probloms via database.
     const probloms = await StepDataFinder.getProblomsByid(problomsId);
