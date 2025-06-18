@@ -29,8 +29,9 @@ function CompilerContainer() {
 
   const findingAllStepsInfo = async() =>{
     // Calling APi for get step All step Question.
+    console.log("i am hitting here")
     
-    const response = await StepDataFinder.getAllStepInfoOfSelectedStackNode({stackId: location.state.activeNodePont, stepid: 1}); // techStack id and techStack StepId.
+    const response = await StepDataFinder.getAllStepInfoOfSelectedStackNode({stackId, stepid: location.state?.activeNodePont}); // techStack id and techStack StepId.
     setStepData(response.data)
 
     // Finding probloms for then frist time when API get fired.

@@ -43,12 +43,18 @@ export default function CustomizedDialogs({switchSack, setSwitchSack}: {switchSa
       stackId: 2,
       stackName: "Targeted Services Based Company DSA",
       getDataFromApi: DashboardServices.getDsaForServicesBase
+    },
+    {
+      stackId: 4,
+      stackName: "Typescript interview Question",
+      getDataFromApi: DashboardServices.getTypescriptQuestion
     }
   ]
 
 
 
   const handleSwitchStack = async(stackId: number) =>{
+    console.log("fdddd", stackId)
 
     /**
      * If stack already present in slice then make that TechStack Data at frist position

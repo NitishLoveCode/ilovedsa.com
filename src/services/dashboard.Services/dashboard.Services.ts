@@ -1,6 +1,6 @@
 import { IDsaStepsDsashboard, ITechStackList } from "../../modal/dashboard/DashboardModal";
 import { getRequest } from "../api"
-import { DASHBOARD, DSA_STEPS, TECH_STACK_List, VITE_DSA_FOR_SERVICES_BASE } from "../CONSTANTS.SERVICES";
+import { DASHBOARD, DSA_STEPS, TECH_STACK_List, TYPESCRIPT_INTERVIEW_QUESTION, VITE_DSA_FOR_SERVICES_BASE } from "../CONSTANTS.SERVICES";
 
 
 
@@ -20,6 +20,14 @@ export class DashboardServices {
      */
     public static getDsaForServicesBase = async(): Promise<IDsaStepsDsashboard> =>{
         const response: IDsaStepsDsashboard = await getRequest(DASHBOARD + VITE_DSA_FOR_SERVICES_BASE)
+        return response;
+    }
+    /**
+     * Get API for calling DSA for service base compeny.
+     */
+    public static getTypescriptQuestion = async(): Promise<IDsaStepsDsashboard> =>{
+        console.log("i am calling", DASHBOARD + TYPESCRIPT_INTERVIEW_QUESTION)
+        const response: IDsaStepsDsashboard = await getRequest(DASHBOARD + TYPESCRIPT_INTERVIEW_QUESTION)
         return response;
     }
 
