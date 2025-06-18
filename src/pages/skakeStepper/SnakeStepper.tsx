@@ -10,6 +10,9 @@ export default function SnakeStepper() {
   const storedDsaSteps = useAppSelector((state) => state.techStackStepSlice)
 
 
+  console.log("i am data",storedDsaSteps)
+
+
   return (
     <Fragment>
       <Box className="flex m-5">

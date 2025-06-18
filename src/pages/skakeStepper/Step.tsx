@@ -47,9 +47,6 @@ function Step({
    * activeNodePont: inside stackId in which step user choosed.
    */
 
-  console.log('i am active node', {activeNode, element})
-
-
   const handleNodeClick = ({element}: {element: number}) =>{
     switch(location.pathname){
       case "/dashboard":

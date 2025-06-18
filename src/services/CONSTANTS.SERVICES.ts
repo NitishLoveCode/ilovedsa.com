@@ -16,3 +16,4 @@ export const VITE_DSA_FOR_SERVICES_BASE: string = import.meta.env.VITE_DSA_FOR_S
 export const CODE_EDITOR = import.meta.env.VITE_CODE_EDITOR;
 export const TECH_STACK_NODE_INFO = import.meta.env.VITE_TECH_STACK_NODE_INFO;
 export const PROBLOMS_BY_ID = import.meta.env.VITE_PROBLOMS_BY_ID;
+export const TYPESCRIPT_INTERVIEW_QUESTION = import.meta.env.VITE_TYPESCRIPT_INTERVIEW;
