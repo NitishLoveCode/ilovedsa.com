@@ -10,20 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup SSH Key
+      - name: Set up SSH key
         run: |
-          echo "${{ secrets.EC2_KEY }}" > ec2-key.pem
+          echo "${{ secrets.EC2_SSH_KEY }}" > ec2-key.pem
           chmod 600 ec2-key.pem
 
-     - name: Test SSH
-  run: |
-    ssh -i ec2-key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo Connected!"
-            cd /home/ubuntu/myapp || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git myapp
+      - name: Deploy to EC2
+        run: |
+          ssh -i ec2-key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd /home/${{ secrets.EC2_USER }}/myapp || git clone https://github.com/${{ github.repository }} myapp
             cd myapp
             git pull origin main
-            npm install --production   # adjust for your stack
+            npm install --production
             pm2 restart app || pm2 start npm --name "app" -- start
           EOF
