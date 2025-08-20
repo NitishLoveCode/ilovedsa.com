@@ -18,9 +18,9 @@ jobs:
           echo "${{ secrets.EC2_KEY }}" > ec2-key.pem
           chmod 600 ec2-key.pem
 
-      - name: Deploy to EC2
-        run: |
-          ssh -i ec2-key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+     - name: Test SSH
+  run: |
+    ssh -i ec2-key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo Connected!"
             cd /home/ubuntu/myapp || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git myapp
             cd myapp
             git pull origin main
