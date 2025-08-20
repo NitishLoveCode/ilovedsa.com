@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main   # change if needed
+      - main
 
 jobs:
   deploy:
@@ -13,19 +13,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.EC2_KEY }}
-
-      - name: SSH Manually here.
+      - name: Setup SSH Key
         run: |
           echo "${{ secrets.EC2_KEY }}" > ec2-key.pem
           chmod 600 ec2-key.pem
-          ssh -i ec2-key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo connected!"
-            cd /root/myapp || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git myapp
+
+      - name: Deploy to EC2
+        run: |
+          ssh -i ec2-key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd /home/ubuntu/myapp || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git myapp
             cd myapp
             git pull origin main
-            npm install --production   # adjust (mvn package, yarn build, docker, etc.)
+            npm install --production   # adjust for your stack
             pm2 restart app || pm2 start npm --name "app" -- start
           EOF
