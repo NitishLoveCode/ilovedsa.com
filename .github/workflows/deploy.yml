@@ -3,24 +3,27 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main
+      - main   # change if needed
 
 jobs:
   deploy:
-    name: Deploy to EC2
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.EC2_KEY }}
 
-      - name: Deploy code to EC2
+      - name: Deploy to EC2
         run: |
-          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd /home/${{ secrets.EC2_USER }} && git clone https://github.com/NitishLoveCode/ilovedsa.com.git && git pull origin main && npm install"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd /root/myapp || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git myapp
+            cd myapp
+            git pull origin main
+            npm install --production   # adjust (mvn package, yarn build, docker, etc.)
+            pm2 restart app || pm2 start npm --name "app" -- start
+          EOF
