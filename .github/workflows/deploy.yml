@@ -28,7 +28,11 @@ jobs:
         run: npm run build
 
       - name: Sending dist code to Nginx
-        run: | 
-          echo "Hurrayyyyyyyyyyyyyyyyy...."
+        run: |
+          echo "Deploying build to Nginx..."
+          sudo rm -rf /var/www/html/*
+          sudo cp -r dist/* /var/www/html/
+          sudo systemctl restart nginx
+          echo "Deployment completed!"
 
       
