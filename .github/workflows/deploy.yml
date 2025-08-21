@@ -35,4 +35,10 @@ jobs:
           sudo systemctl restart nginx
           echo "Deployment completed!"
 
+      - name: dist folder completely moved to nginx, now deleting clone code.
+        run: |
+          echo "Deleting old ilovedsa.com frontend folder..."
+          rm -rf ~/actions-runner/_work/ilovedsa.com
+          echo "Old folder deleted successfully."
+
       
