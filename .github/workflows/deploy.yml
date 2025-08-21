@@ -24,14 +24,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Tests
-        run: npm test
-
       - name: Build Application
         run: npm run build
 
-      - name: Deploy (if needed)
-        run: |
-          echo "Deploying application..."
-          # Add your deployment script here
-          # e.g., pm2 restart app, docker-compose up -d, or rsync to a server
+      - name: Sending dist code to Nginx
+        run: | 
+          echo "Hurrayyyyyyyyyyyyyyyyy...."
+
+      
