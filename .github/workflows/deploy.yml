@@ -1,20 +1,44 @@
-name: Test SSH to EC2
+name: Deploy React App to EC2
 
 on:
-  workflow_dispatch: # Trigger manuall
+  push:
+    branches:
+      - main  # or your deployment branch
 
 jobs:
-  ssh-test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Connect to EC2 using Elastic IP
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.EC2_HOST }} # Now set to 43.204.248.95
+          host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "Connected via Elastic IP!"
-            uname -a
-            whoami
+            rm -rf /var/www/frontend/*
+            mkdir -p /var/www/frontend
+            exit
+
+      - name: Upload build files
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "build/*"
+          target: "/var/www/frontend"
