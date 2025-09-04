@@ -1,7 +1,7 @@
 name: Test SSH to EC2
 
 on:
-  workflow_dispatch: # Trigger manually
+  workflow_dispatch: # Trigger manuall
 
 jobs:
   ssh-test:
