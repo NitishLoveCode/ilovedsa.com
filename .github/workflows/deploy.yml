@@ -37,6 +37,7 @@ jobs:
           script: |
             rm -rf /var/www/frontend/*
             mkdir -p /var/www/frontend
+            mkdir -p /var/www/frontendtttt
 
       - name: Upload build files
         uses: appleboy/scp-action@v0.1.3
