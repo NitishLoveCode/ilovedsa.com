@@ -1,26 +1,50 @@
-name: Deploy to EC2
+name: Deploy React App to EC2
 
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   deploy:
-    name: Deploy to EC2
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-      - name: Deploy code to EC2
+      - name: Install dependencies and build
         run: |
-          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd /home/${{ secrets.EC2_USER }} && git clone https://github.com/NitishLoveCode/ilovedsa.com.git && git pull origin main && npm install"
+          npm ci
+          npm run build
+
+      - name: Verify build output
+        run: |
+          echo "Root directory contents:"
+          ls -la
+          echo "Build directory contents:"
+          ls -la build || { echo "❌ Build folder missing!"; exit 1; }
+
+      - name: Prepare EC2 directory
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo mkdir -p /var/www/frontend
+            sudo rm -rf /var/www/frontend/*
+
+      - name: Upload build files
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "dist/"
+          target: "/var/www/frontend"
