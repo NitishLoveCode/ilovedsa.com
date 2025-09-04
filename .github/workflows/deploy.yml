@@ -3,7 +3,7 @@ name: Deploy React App to EC2
 on:
   push:
     branches:
-      - main  # or your deployment branch
+      - main
 
 jobs:
   deploy:
@@ -20,10 +20,15 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          npm install
+          npm ci
           npm run build
 
-      - name: Deploy to EC2
+      - name: Verify build output
+        run: |
+          ls -la
+          ls -la build || echo "No build folder found!"
+
+      - name: Prepare EC2 directory
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -32,7 +37,6 @@ jobs:
           script: |
             rm -rf /var/www/frontend/*
             mkdir -p /var/www/frontend
-            exit
 
       - name: Upload build files
         uses: appleboy/scp-action@v0.1.3
