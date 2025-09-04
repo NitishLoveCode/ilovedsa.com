@@ -1,20 +1,20 @@
 name: Test SSH to EC2
 
 on:
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch: # Trigger manually
 
 jobs:
   ssh-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Connect to EC2 and run a test command
+      - name: Connect to EC2 using Elastic IP
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.EC2_HOST }}
+          host: ${{ secrets.EC2_HOST }} # Now set to 43.204.248.95
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "Connected to EC2 successfully!"
+            echo "Connected via Elastic IP!"
             uname -a
             whoami
