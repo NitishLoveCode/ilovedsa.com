@@ -20,7 +20,7 @@ function HeroSection({open, setOpen}:{open: boolean, setOpen:(parama: boolean)=>
             </div>
         </div>
         <div className="flex flex-col items-center justify-center mt-8">
-            <h2 className="text-5xl">We Serve the <span className="primary-color font-bold">Smartest DSA</span> Bites.</h2>
+            <h2 className="text-5xl">We Serve the <span className="primary-color font-bold">Smartest DSA</span> Bites</h2>
             <p className="font-sans">Master DSA with fun, fast, and bite-sized challenges. Learn more and code like a pro.</p>
         </div>
         {/*  Button */}
